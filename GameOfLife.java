@@ -1,7 +1,10 @@
 /**
- * Idea: Brute force - follow conditions as mentioned in problem
+ * Idea: 
+ * 1. After applying the given conditions : transition from 1 -> 0 is recorded as -1 AND 0 -> 1 as 2
+ * 2. Take care of the above changes while counting live nodes
+ * 3. Shift the -1 and 2 to appropriate values.
  * Time Complexity : O(n)
- * Space Complexity : O(n) - buffer matrix
+ * Space Complexity : O(1) - no extra space
  * Leetcode : Yes 
  */
 

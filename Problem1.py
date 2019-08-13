@@ -1,5 +1,7 @@
 class Problem1:
 	def FindMissingElements1(self, arr):
+		# Time Complexity : O(n) where n is the number of elements in the array
+		# Space Complexity : O(n) where n is the number of elements in the array
 		result_arr = [0] * (len(arr) + 1)
 		for i in arr:
 			result_arr[i] += 1
@@ -10,6 +12,8 @@ class Problem1:
 		return temp
 
 	def FindMissingElements2(self, arr):
+		# Time Complexity : O(n) where n is the number of elements in the array
+		# Space Complexity : constant space just using the output array
 		for i in range(len(arr)):
 			index = abs(arr[i]) - 1
 			if arr[index] > 0:

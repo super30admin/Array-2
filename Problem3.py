@@ -1,3 +1,6 @@
+# Time Complexity : O(mn) where m is the number of rows and n is the number of columns
+# Space Complexity : O(mn) where m is the number of rows and n is the number of columns
+
 class Problem3:
 	def LifeGame(self, matrix):
 		rows = len(matrix)

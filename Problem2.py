@@ -1,3 +1,6 @@
+# Time Complexity : O(n) but we are doing 2 * (n - 1) comparisons
+# Space Complexity : Constant space, we are using two variables
+
 class Problem2:
 	def FindMinMax(self, arr):
 		min_ele = arr[0]

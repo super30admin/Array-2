@@ -1,0 +1,75 @@
+// time complexity = O(m*n) m=rows,n=cols
+// space comp = O(1)
+class Solution {
+    public void gameOfLife(int[][] board) {
+        int r=board.length;
+        int c=board[0].length;
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                int livCount=livingCount(board,i,j);
+                if(board[i][j]==1 &&(livCount<2 || livCount>3))
+                    board[i][j]=-1;
+                if(board[i][j]==0 && livCount==3)
+                    board[i][j]=2;
+            }
+        }
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(board[i][j]==-1)
+                    board[i][j]=0;
+                if(board[i][j]==2)
+                    board[i][j]=1;
+            }
+        }
+    }
+    public int livingCount(int[][] a, int i,int j){
+        int r=a.length;
+        int c=a[0].length;
+        int result=0;
+        //top
+        if(i!=0)
+        {
+            if(a[i-1][j]==1 || a[i-1][j]==-1) result++;
+        }
+        //right
+        if(j!=c-1)
+        {
+            if(a[i][j+1]==1 || a[i][j+1]==-1) result++;
+        }
+        //bottom
+        if(i!=r-1)
+        {
+            if(a[i+1][j]==1 || a[i+1][j]==-1) result++;
+        }
+        //left
+        if(j!=0)
+        {
+            if(a[i][j-1]==1 || a[i][j-1]==-1) result++;
+        }
+        //left up
+        if(i!=0 && j!=0)
+        {
+            if(a[i-1][j-1]==1 || a[i-1][j-1]==-1) result++;
+        }
+        //right up
+         if(i!=0 && j!=c-1)
+        {
+            if(a[i-1][j+1]==1 || a[i-1][j+1]==-1) result++;
+        }
+        //right down
+         if(i!=r-1 && j!=c-1)
+        {
+            if(a[i+1][j+1]==1 || a[i+1][j+1]==-1) result++;
+        }
+        //left down
+         if(i!=r-1 && j!=0)
+        {
+            if(a[i+1][j-1]==1 || a[i+1][j-1]==-1) result++;
+        }
+        return result;
+    }
+}

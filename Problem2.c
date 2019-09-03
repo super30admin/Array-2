@@ -33,8 +33,13 @@ void find_min_max(int* nums, int numsSize){
         return;
     }
     /* Initialize min and max */
-    min = nums[0];
-    max = nums[1];
+    if (num[0] > num[1]) {
+        max = num[0];
+        min = num[1];
+    } else {
+        max = num[1];
+        min = num[0];
+    }
 
     /* Go over the numbers from 3rd element onwards and based on condition update min and max.*/
     for (idx = 2; idx < numsSize; idx++) {

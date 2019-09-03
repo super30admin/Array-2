@@ -1,4 +1,4 @@
-# Time Complexity : O(n) (Average time complexity of 'in' operation for set in python is O(n))
+# Time Complexity : O(n) (Average time complexity of 'in' operation for set in python is O(1))
 # Space Complexity : O(1) (If we don't consider returned list)
 # Did this code successfully run on Leetcode : Yes
 # Three line explanation of solution in plain english:

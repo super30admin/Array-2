@@ -6,12 +6,12 @@
 #we traverse through the array  which has element . and make the element in index (element-1) negative.
 #then we traverse again and give the index+1 of elemetns whose value is greater than 1
 
-class Solution(object):
-    def findDisappearedNumbers(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
+# class Solution(object):
+#     def findDisappearedNumbers(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: List[int]
+#         """
         #brute force method
         # result=[]
         # n=len(nums)
@@ -19,6 +19,17 @@ class Solution(object):
         #     if val not in nums:
         #         result.append(val)
         # return result
+
+#********* the new code****
+#time complexity is o(n)
+#ran on leetocde
+#no doubts
+class Solution(object):
+    def findDisappearedNumbers(self, nums):
+                """
+                :type nums: List[int]
+                :rtype: List[int]
+                """
         result = []
         for i in range(len(nums)):
             index = abs(nums[i]) - 1 #taking the index by subtracting it by 1

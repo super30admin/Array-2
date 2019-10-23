@@ -38,7 +38,7 @@ class Solution(object):
             for j in range(n):
                 if board[i][j]==2:
                     board[i][j]=1
-                elif board[i][j]==-1:
+                if board[i][j]==-1:
                     board[i][j]=0
     
                      

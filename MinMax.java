@@ -1,19 +1,32 @@
-public static void minmax0(int[] a) {
+public static void minmax(int[] a) {
+ 
 	if (a == null || a.length < 1)
 		return;
  
-	int min = a[0];
-	int max = a[0];
+	int min, max;
+ 	if (a.length == 1) {
+		max = a[0];
+		min = a[0];
+		System.out.println("min: " + min + "\nmax: " + max);
+		return;
+	}
  
-	for (int i = 1; i <= a.length - 1; i++) {
+	if (a[0] > a[1]) {
+		max = a[0];
+		min = a[1];
+	} else {
+		max = a[1];
+		min = a[0];
+	}
+ 
+	for (int i = 2; i <= a.length - 1; i++) {
 		if (max < a[i]) {
 			max = a[i];
-		}
- 
-		if (min > a[i]) {
+		} else if (min > a[i]) {
 			min = a[i];
 		}
 	}
  
 	System.out.println("min: " + min + "\nmax: " + max);
 }
+// 2n-1 comparison

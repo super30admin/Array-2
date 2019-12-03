@@ -1,6 +1,6 @@
 # Runs on Leetcode
-# Runtime complexity:  O(n)
-# Memory complexity: O(n)-used dictionary
+# Runtime complexity:  O(mn)
+# Memory complexity: O(mn)-used dictionary
 # Faced problem to do in space changes
 
 class Solution:
@@ -39,7 +39,8 @@ class Solution:
                     d[(i,j)] = self.live_helper(self.count_helper(board,i,j,rows,cols))
                 else:
                     d[(i,j)] = self.dead_helper(self.count_helper(board,i,j,rows,cols))
-                    
+                   
+            
         for i in range(rows):
             for j in range(cols):
                 if d[(i,j)] is False:

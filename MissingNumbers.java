@@ -7,7 +7,7 @@ class Solution {
     class Solution {
      public List<Integer> findDisappearedNumbers(int[] nums){
         int missingNumbers;
-        Hassetet set = new Hassetet();
+        HashSet set = new HashSet();
         List<Integer> ans = new ArrayList<>();
         int counter=0;
         for (int i=0; i<nums.length;i++){

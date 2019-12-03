@@ -1,7 +1,6 @@
 # Runs on leetcode --all three approaches
 # Run time Complexities are o(n) for all methods
-# Memory complexity is O(1) for first method --without extra space
-                      O(n) for both set and hashmap methods
+# Memory complexity is O(1) for first method --without extra space & O(n) for both set and hashmap methods
 
 
 def findDisappearedNumbers_without_extra_space(nums):

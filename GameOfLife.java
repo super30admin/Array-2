@@ -1,9 +1,9 @@
 // Time Complexity : O(mn)
 // Space Complexity : O(mn)
 // Did this code successfully run on Leetcode : Yes
-//brute force solution
-
+//Just optimized counting of neighboring lives using a directions array and the submission was faster that 100% compared to 5% 
 class Solution {
+    int[][] directions = {{0,1},{0,-1},{-1,-1},{1,1},{1,0},{-1,0},{1,-1},{-1,1}};
     public void gameOfLife(int[][] board) {
         if(board == null || board.length ==0){
             return;
@@ -13,7 +13,7 @@ class Solution {
             for(int j = 0 ; j < board[0].length; j++){
                 
                 int countOne = countOnes(board, i, j);
-                System.out.println(countOne);
+                //System.out.println(countOne);
                 if(board[i][j] ==0){                  
                     if(countOne == 3){
                         result[i][j] = 1;
@@ -39,54 +39,18 @@ class Solution {
         
     }
     
-    
-    
     public int countOnes(int[][] board, int i, int j){
-        int count = 0;
-        if(i + 1 < board.length){
-            if(board[i+1][j] == 1){
-                    count += 1;
-                }
-            if(j+1 < board[0].length){
-                if(board[i+1][j+1] == 1){
-                    count += 1;
-                }
-                if(board[i][j+1] == 1){
-                    count += 1;
-                }
-            
+        int lives = 0;
+        for(int[] dir : directions){
+            int x = dir[0] + i;
+            int y = dir[1] + j;
+            if(x< 0 || x>= board.length || y<0 || y>=board[0].length){
+                continue;
             }
-            if(j -1 >= 0){
-                if(board[i+1][j-1] == 1){
-                    count += 1;
-                }
-                if(board[i][j-1] == 1){
-                    count += 1;
-                }
+            if(board[x][y] == 1 || board[x][y] ==2){
+                lives ++;
             }
         }
-        if(i -1 >= 0){
-            if(board[i-1][j] == 1){
-                    count += 1;
-                }
-            if(j+1 < board[0].length){
-                if(board[i-1][j+1] == 1){
-                    count += 1;
-                }
-                if(board[i][j+1] == 1 && i+1 >= board.length){
-                    count += 1;
-                }
-            
-            }
-            if(j -1 >= 0){
-                if(board[i-1][j-1] == 1){
-                    count += 1;
-                }
-                if(board[i][j-1] == 1 && i+1 >= board.length){
-                    count += 1;
-                }
-            }
-        }
-        return count;
+        return lives;
     }
 }

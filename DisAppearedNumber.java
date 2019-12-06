@@ -3,7 +3,7 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No. Key is to remember Math.abs operation though.
 
-class DisAppearedNumber {
+class DisappearedNumber {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List <Integer> disAppearedList = new ArrayList<>();
         

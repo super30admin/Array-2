@@ -1,0 +1,50 @@
+//Time:  O(n)
+//Space:  O(n)
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> res=new LinkedList<Integer>();
+        //Extra space
+        int[] result=new int[nums.length];
+        for(int i=0;i<nums.length;i++)
+        {
+            int newindx=Math.abs(nums[i])-1;
+            //if(nums[newindx]>0) since the condition in ques clearly says 1<= nums <=n
+            result[newindx]=nums[i];
+        }
+        for(int j=0;j<result.length;j++)
+        {
+           
+            if(result[j]==0)
+              res.add(j+1);  
+        }
+        return res;
+    }
+}
+
+//Time: O(n)
+//Space: O(1)
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> res=new LinkedList<Integer>();
+        for(int i=0;i<nums.length;i++)
+        {
+            //find appropriate positions of numbers in array
+            int newindx=Math.abs(nums[i])-1;
+           //if new index is non-negative then only change so that we can not avoid making it positive for the repeated numbers since we will use this intuation in another loop to check missing numbers
+           if(nums[newindx]>0)
+            nums[newindx]*=-1;
+           
+        }
+        for(int j=0;j<nums.length;j++)
+        {
+            //If number is positive means untouched and the index+1 is missing number
+            if(nums[j]>0)
+              res.add(j+1);  
+        }
+        return res;
+    }
+}
+
+
+

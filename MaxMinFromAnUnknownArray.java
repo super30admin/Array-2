@@ -1,5 +1,8 @@
 // Time Complexity : Since for every case, we are doing 3 comparisions, each case is 3*O(1). 
-// We are also pairing up these elements, so for pairing, it is O(N/2). Total is N/2 * 3 times O(1)
+// We are also pairing up these elements, so for pairing, it is O(N/2). 
+// Total is: O( 3*N/2) => O(N)
+
+
 // Space Complexity : O(1) 
 // Did this code successfully run on IDE : Yes
 // Any problem you faced while coding this : No

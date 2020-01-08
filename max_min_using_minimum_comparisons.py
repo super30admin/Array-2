@@ -49,7 +49,7 @@ class Solution:
 
     def find_max_min_using_divide_and_conquer(self, nums: List[int]) -> tuple:
         """
-            // Time Complexity : O(logn)
+            // Time Complexity : O(3((N-1)/2))
             // Space Complexity : O(logn)
             // Did this code successfully run on Leetcode : N/A
             // Three line explanation of solution in plain english
@@ -64,7 +64,7 @@ class Solution:
     def _helper(self, nums: List[int], start: int, end: int) -> tuple:
 
         mid = (start + end) // 2
-
+        print('Function call')
         # base case
         # there are two elements
         if end - start == 1:
@@ -77,19 +77,19 @@ class Solution:
         # min, max from the left half
         max_1, min_1 = self._helper(nums, start, mid)
         # min, max from the right half
-        max_2, min_2 = self._helper(nums, mid, end)
+        max_2, min_2 = self._helper(nums, mid + 1, end)
         return max(max_1, max_2), min(min_1, min_2)
 
 
 if __name__ == '__main__':
     h = Solution()
-    print(h.find_max_min_using_divide_and_conquer([2, 5, 6, 4, 9, 10]))
+    print(h.find_max_min_using_divide_and_conquer([2, 5, 4, 10]))
     print(h.find_max_min_using_divide_and_conquer([2, 5, 6, 10, 3]))
     print(h.find_max_min_using_divide_and_conquer([12, 5, 6, 10, 3]))
     print(h.find_max_min_using_divide_and_conquer([12, 5, 6, 10, -3]))
-    print(h.find_max_min_using_divide_and_conquer([-12, -5, -6, -10, -3]))
+    print(h.find_max_min_using_divide_and_conquer([-12, -5, -6, -10, -3,-12, -5, -6, -10, -3]))
     print(h.find_max_min_using_minimum_comparisons([2, 5, 6, 4, 9, 10]))
     print(h.find_max_min_using_minimum_comparisons([2, 5, 6, 10, 3]))
     print(h.find_max_min_using_minimum_comparisons([12, 5, 6, 10, 3]))
     print(h.find_max_min_using_minimum_comparisons([12, 5, 6, 10, -3]))
-    print(h.find_max_min_using_minimum_comparisons([-12, -5, -6, -10, -3]))
+    print(h.find_max_min_using_minimum_comparisons([-12, -5, -6, -10, -3,-12, -5, -6, -10, -3]))

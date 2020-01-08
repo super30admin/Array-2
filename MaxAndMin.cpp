@@ -2,6 +2,17 @@
 #include<vector>
 #include <algorithm>
 using namespace std;
+// Time Complexity : O(N - 2)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach
+/*
+We take number in pairs and compare them with global varibale maximum and minimum.This will reduce 
+unnecessary comparsion from N TO N -2
+*/
 
 int main(){
     int arr[] = {3,434,34,34,4,67,45};

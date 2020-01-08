@@ -16,7 +16,14 @@ class Solution:
             // Space Complexity : O(1) 
             // Did this code successfully run on Leetcode : Yes
             // Three line explanation of solution in plain english
-                - 
+                - For each element in the matrix, count the number of 
+                  live neighbours
+                - For each case, if we need to flip alive to dead or 
+                  dead to alive temporarily change it to a different value  
+                  just to take into account that the state of this element 
+                  has been changed. 
+                - Traverse the matrix and for each temp change value, change
+                  to the corresponding correct state.
         """
         if not board:
             return

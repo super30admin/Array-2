@@ -27,15 +27,24 @@ class Solution:
         max_val = nums[0]
         min_val = nums[0]
 
-        for i in range(1, len(nums) - 1, 2):
-            if nums[i] > nums[i + 1]:
+        length = len(nums)
+
+        for i in range(1, length, 2):
+            # last index, no pair
+            if i == length - 1:
+                max_val = max(max_val, nums[i])
+                min_val = min(min_val, nums[i])
+            # if first element in the pair is greater
+            # then second element in pair is lesser
+            elif nums[i] > nums[i + 1]:
                 max_val = max(max_val, nums[i])
                 min_val = min(min_val, nums[i + 1])
+            # else second element in the pair is greater
+            # first element in the pair is lesser
             else:
-                min_val = min(min_val, nums[i])
                 max_val = max(max_val, nums[i + 1])
-        max_val = max(max_val, nums[len(nums) - 1])
-        min_val = min(min_val, nums[len(nums) - 1])
+                min_val = min(min_val, nums[i])
+
         return max_val, min_val
 
     def find_max_min_using_divide_and_conquer(self, nums: List[int]) -> tuple:

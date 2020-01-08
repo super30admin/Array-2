@@ -1,3 +1,7 @@
+/********* Time Complexity : O(2mn) -> O(mn) **********/
+/********* Space Complexity : O(1) **********/
+/********* The code ran in Leetcode **********/
+
 class Solution {
     public void gameOfLife(int[][] board) {
         

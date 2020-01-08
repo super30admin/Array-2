@@ -1,3 +1,7 @@
+/********* Time Complexity : O(n) **********/
+/********* Space Complexity : O(1) **********/
+/********* The code ran in Leetcode **********/
+
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
      

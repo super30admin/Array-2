@@ -1,0 +1,59 @@
+//Time:  O(m*n)
+??space: O(1) since using same board
+class Solution {
+    public void gameOfLife(int[][] board) {
+        int m=board.length;
+        if(m==0 || board==null) return;
+        int n=board[0].length;
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                int count=countLivesAtNeighbor(board, i, j);
+                if((count<2 && board[i][j]==1) || (count>3 && board[i][j]==1))
+                {
+                   board[i][j]=2; 
+                }
+                else if(board[i][j]==0 && count==3)
+                {
+                    board[i][j]=3; 
+                }
+            }
+        }
+                   
+       for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+              if(board[i][j]==2)
+                  board[i][j]=0;
+                if(board[i][j]==3)
+                  board[i][j]=1;
+            } 
+        }
+    }
+
+                   
+                    private int countLivesAtNeighbor(int[][] board,int i,int j)
+                   {
+                       //possible directions right left  top   bottom left-top right-top left-bottom  right-bottom
+                       int[][] directions= {{0,1},{0,-1},{-1,0},{1,0}, {-1,-1},  {-1,1},    {1,-1},      {1,1}};
+                       int count=0;
+                       for(int[] dir:directions)
+                       {
+                           int row=i+dir[0];
+                           int column = j+dir[1];
+                           //board row and column should not go out of bound 
+                           if(row>=0 && row<board.length && column>=0 && column<board[0].length )
+                           {
+                                if(board[row][column]==1 || board[row][column]==2)
+                               count++; 
+                           }
+                          
+                           
+                       }
+                       return count;
+                       
+                   }      
+                   
+ }

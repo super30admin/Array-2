@@ -1,7 +1,7 @@
 // S30 Big N Problem #30 {Easy}
 // 448. Find All Numbers Disappeared in an Array
-// Time Complexity :
-// Space Complexity :
+// Time Complexity : O(n) {2 parse}
+// Space Complexity : No extra space
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :None
 

@@ -24,10 +24,12 @@ public class Main {
         min = Math.min(min,max); 
         max = Math.max(min,max);
         for(; i < arr.length; i+= 2) {
+            // 3 comparisions for a pair of elements => So, 3n/2 in total
             int curr_max = Math.max(arr[i], arr[i+1]); //pick max from the pair
-            int curr_min = Math.min(arr[i], arr[i+1]); // pick min from the pair
+            int curr_min = arr[i]+arr[i+1]-curr_max; // calculate min based on sum
             max = Math.max( max, curr_max); // compare curr_max and curr
             min = Math.min( min, curr_min); // compare curr_min and min
+
         }
         return new int[]{min,max};
     }

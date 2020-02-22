@@ -3,7 +3,7 @@
 // Did this code successfully run on Leetcode :No
 // Any problem you faced while coding this : No
 
-public class FindMinMax {
+public class FindMinMaxBrute {
     static class Pair{
         int min;
         int max;
@@ -27,12 +27,12 @@ public class FindMinMax {
         minmax.min = min;
         return minmax;
     }
-    public static void main(String[] args) {
-    FindMinMax fm =  new FindMinMax();
-    int[] ip = {1,2,3,4};
-
-        Pair minmax = fm.minMax(ip,ip.length);
-        System.out.println("Max: " +minmax.max);
-        System.out.println("Min: " +minmax.min);
-    }
+//    public static void main(String[] args) {
+//    FindMinMaxBrute fm =  new FindMinMaxBrute();
+//    int[] ip = {1,2,3,4};
+//
+//        Pair minmax = fm.minMax(ip,ip.length);
+//        System.out.println("Max: " +minmax.max);
+//        System.out.println("Min: " +minmax.min);
+//    }
 }

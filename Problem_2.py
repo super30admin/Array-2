@@ -7,8 +7,8 @@
 
 def get(arr):
     if len(arr)%2==0:
-        minimum = 100000000000
-        maximum = -100000000000
+        minimum = float('inf')
+        maximum = float('-inf')
     else:
         minimum = arr[-1]
         maximum = arr[-1]

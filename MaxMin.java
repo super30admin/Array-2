@@ -1,4 +1,4 @@
-// Time Complexity :O(3/2n-2)
+// Time Complexity : T(n)= |n/2| + |n/2| + 2 => O(3/2n-2)
 // Space Complexity :O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No

@@ -1,6 +1,11 @@
 # Time Complexity :O(n)
 # Space Complexity :O(log n)-For recursion call stack
-
+# T(n) = 2 T(n/2) + 2
+# T(2) = 1
+# T(1) = 0
+# We can solve this recurrence relation by master method/recursion tree method.
+# if n is a power of 2
+# T(n) = 3n/2 - 2 comparisions
 #If arr size is 1: return the first element as min and max
 #If the array size is 2: Compare between two numbers and return min and max
 #Else recursively store and calculate min and max of the left and right array. 

@@ -1,0 +1,25 @@
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+
+class Solution {
+    func findDisappearedNumbers(_ nums: [Int]) -> [Int] {
+        var out = [Int]()
+        var a = nums
+        var i = 0
+        while i < a.count {
+            var k = i
+            var t = a[k]
+            while k != t - 1 && a[k] != a[t - 1] {
+                t = a[k]
+                a[k] = a[t - 1]
+                a[t - 1] = t 
+            }
+            i = k + 1
+        }
+        for i in 0..<a.count where a[i] != i + 1 {
+            out.append(i + 1)
+        }
+        return out
+    }
+}

@@ -1,0 +1,9 @@
+31. Given a array find a min and max value in less than 2*(N-2) comparison
+
+- if we take first value as min and max and now comparison will all the other values then its 2*N -2 moves
+
+- when we compare in pairs,
+a,b first compare which is min and which is max and now compare it with actual min and max.
+it makes 3*(n/2) (3 moves for N/2 elements) == 1.5 N
+
+- when we compare triplets - its 5*(n/3) == 1.66N 

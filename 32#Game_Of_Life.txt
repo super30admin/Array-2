@@ -1,0 +1,45 @@
+// Time Complexity : O(m*n)
+// Space Complexity : O(m*n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+public class Solution {
+
+/* dir array to move in all 8 direction from the given cell */
+int[][] dir ={{1,-1},{1,0},{1,1},{0,-1},{0,1},{-1,-1},{-1,0},{-1,1}};
+    
+public void gameOfLife(int[][] board) {
+    
+    /* edge case */
+    if(board == null || board.length == 0)
+        return board;
+    
+    /* two for loops to iterate over each celll of board */
+    for(int i=0;i<board.length;i++){
+        for(int j=0;j<board[0].length;j++){
+            
+            /* get number of live neighbours */
+            int live=0;
+            
+            /* move in all 8 directions of cell */
+            for(int[] d:dir){
+                /* if the row index or column i out of bound or is below zero just continue */
+                if(d[0]+i<0 || d[0]+i>=board.length || d[1]+j<0 || d[1]+j>=board[0].length) continue;
+                /* if value is 1 or value is 2(its new updated value for old live value) */
+                if(board[d[0]+i][d[1]+j]==1 || board[d[0]+i][d[1]+j]==2) live++;
+            }
+            /* if value is zero and has 3 live neighbours than make it 3 which indicates the old value is zero and new value is 1 */
+            if(board[i][j]==0 && live==3) board[i][j]=3;
+              /* if value is 1 and has less than 2 or gretare than 3 live neighbours than make it 2 which indicates the old value is 1 and new value is zero */          
+            if(board[i][j]==1 && (live<2 || live>3)) board[i][j]=2;
+        }
+    }
+    
+    /* just now update the table with new value */
+    for(int i=0;i<board.length;i++){
+        for(int j=0;j<board[0].length;j++){
+            board[i][j] %=2; // we have used two 2 and 3 and % operation will be the updated value
+        }
+    }
+}

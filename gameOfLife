@@ -1,0 +1,57 @@
+Time Complexity: 0(m*n)
+Space Complexity: O(1)
+This code did compile in Leetcode but giving the answer as wrong, I tried to debug it, but not finding the mistake. Please help. 
+
+class Solution {
+	int m; int n;
+	public void gameOfLife(int[][] board) {
+		int m = board.length; int n = board[0].length;
+		if(board == null || m == 0) return;
+
+		for(int i=0; i< m; i++)
+		{
+			for(int j=0; j<n; j++)
+			{
+				int livingCount = countLives(board, i, j);
+				//rules 1&3
+				if(board[i][j] == 1){
+					if (livingCount < 2 || livingCount >3)
+					{
+						board[i][j] = 8;
+					}
+				}
+				else 
+				{
+					if(livingCount == 3 ) 
+						board[i][j] = 7;
+				}
+
+			}
+
+		}
+
+
+		for(int i=0; i< m; i++)
+		{
+			for(int j=0; j<n; j++)
+			{
+				if(board[i][j] == 7) board[i][j] = 1;
+				if(board[i][j] == 8) board[i][j] = 0;
+
+			}  
+		}
+	}
+
+	private int countLives(int[][] board, int i, int j)
+	{
+		int count =0;
+		int[][] dirs = {{0,1},{0,-1},{-1,0},{1,0},{-1,-1},{1,1},{1,-1},{-1,1}};
+		for(int [] dir: dirs)
+		{
+			int r = i+dir[0];
+			int c = j+dir[1];
+			if(r>=0 && c>=0 && r<m && c<n && (board[r][c] ==1 || board[r][c] == 8)) {count++;}
+		}
+		return count;  
+	}
+}

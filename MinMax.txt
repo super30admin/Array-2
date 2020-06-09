@@ -1,0 +1,3 @@
+// Instead of traversing one element at a time, traverse on a pair of 2 elements at a time, 
+// and update overall max and min with the pair's max and min if required. 
+// So, instead of having 2n comparisons, we will have 1.5n comparisons.

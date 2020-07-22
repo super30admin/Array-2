@@ -1,0 +1,11 @@
+To find the minimum and maximum of a given array of numbers, 
+we need a minimum of 2n-2 comparisons. (n-1 for min, n-1 for max).
+
+However, we could solve it in 1.5n-2 comparisons in the following way.
+
+1. Divide the given array pair wise. (that is each subarray has just 2 elements)
+2. Between these two elements, just one comparison is enough to know the local min and local max.
+3. Now, one comparison is required to compare with global min.
+4. One to compare with global max.
+5. So, for every pair of elements, we need a maximum of 3 comparisons.
+6. So, in total we'll have 3(n/2) - 2 comparisons to find the min and max of the whole array.

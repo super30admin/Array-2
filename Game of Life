@@ -1,0 +1,77 @@
+Approach 1 : Create a copy of board which will remain unchanged throughout the process.
+Iterate the cells of the Board one by one.
+create a list of all neighbors
+While computing the results based on the rules, use the copy board and apply the result in the original board.
+Time Complexity : O(4*mn)= O(mn)
+Space Complexity : O(mn)
+from copy import copy, deepcopy
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        neighbours=[(1,0),(0,1),(1,1),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)]
+        rows=len(board)
+        cols=len(board[0])
+        copy_board =deepcopy(board) ### Create the copy of original board
+        print(copy_board)
+        ### Iterate through board cell by cell 
+        for row in range (rows):
+            for col in range (cols): 
+                live_neighbours=0 ## initialize the live neighbours
+                for neighbour in neighbours:
+                    r=(row+neighbour[0])
+                    c=(col+neighbour[1])
+                    ## count the no of live neighbours
+                    if (r < rows and r >= 0) and (c < cols and c >= 0) and (copy_board[r][c] == 1):
+                        live_neighbours += 1
+                        # rule 1 & Rule 3
+                if copy_board[row][col] == 1 and (live_neighbours < 2 or live_neighbours > 3):
+                    board[row][col] = 0
+                    # rule 4
+                if copy_board[row][col] == 0 and live_neighbours == 3:
+                    board[row][col]=1
+       
+       Approach 2 : In Place 
+       Time Complexity :O(mn)
+       Space Complexity :O(1)
+       Note to self : horizontal neighbors of (x, y) are (x +/- 1, y) , Vertical neighbors are (x,y+/--1) , Diagonal Neighbors are (x+/-1,y+/-1)
+       since we only have two possibilities for live(1), dead(0). We can change the value of 1 that becomes 0 as -1 (indicates it was dead now but the abs indicates it was live previuosly) and change the value of  0 that becomes 1 as 2(
+       +sign indicates the cell is live now but the 2 indicates it was previously dead)
+       class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        neighbours=[(1,0),(0,1),(1,1),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)]
+        print(neighbours)
+        rows=len(board)
+        cols=len(board[0])
+        for row in range(rows):
+            for col in range(cols):
+                live_neighbours=0 ## Count the no of live neighbours
+                for neighbour in neighbours:
+                    #rows and columns of the neighbouring cells
+                    r=(row+neighbour[0])
+                    c=(col+neighbour[1])
+                    ## If the valididty of the original cell is 1 then count
+                    if (r<rows and r>=0) and (c<cols and c>=0) and abs(board[r][c])==1:
+                        live_neighbours+=1
+                ## rule 1 or 3
+                if (board[row][col]==1) and (live_neighbours<2 or live_neighbours>3):
+                    board[row][col]=-1
+                ## rule 4
+                if (board[row][col]==0) and live_neighbours==3:
+                    board[row][col]=2
+        for row in range(rows):
+            for col in range (cols):
+                if board[row][col]>0:
+                    board[row][col]=1
+                else:
+                    board[row][col]=0
+       
+       
+       
+       
+       
+       

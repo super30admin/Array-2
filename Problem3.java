@@ -68,7 +68,7 @@ class Problem3 {
         for(int[] neighbor: neighbors){
             int curRow = neighbor[0] + row;
             int curCol = neighbor[1] + col;
-            // in rang
+            // in range
             if((0<= curRow) && ( curRow <n) && (0<= curCol) && (curCol< m)){
                 if(board[curRow][curCol] == 1 || board[curRow][curCol] == 3)
                     result++;

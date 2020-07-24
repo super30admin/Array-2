@@ -1,6 +1,6 @@
 # APPROACH 1: USING EXTRA SPACE
 # Time Complexity : O(m*n), m: number of rows of board, n: number of columns of board
-# Space Complexity : O(m*n), the space of result array
+# Space Complexity : O(m*n), the space of result array, else O(1)
 # Did this code successfully run on Leetcode : N/A
 # Any problem you faced while coding this : None (forgot to copy the elements from board to result if no condition affects them)
 #
@@ -50,7 +50,7 @@ class Solution:
 
 # APPROACH 2: MODIFY IN-PLACE 
 # Time Complexity :  O(m*n), m: number of rows of board, n: number of columns of board
-# Space Complexity : O(m*n), the space of result array
+# Space Complexity : O(1), since board is modified in-place
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : None
 #

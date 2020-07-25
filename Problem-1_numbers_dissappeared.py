@@ -6,7 +6,7 @@
 #
 #
 # Your code here along with comments explaining your approach
-# 1. Create a hashmap to store the count of all unique elements of nums
+# 1. Create a hashmap to store the count of all unique elements of nums (OR can use hashset as well as we need only items and no key-value pairs)
 # 2. Go through hashmap and check for those elements whose count is 0 and store them in result
 
 class Solution:

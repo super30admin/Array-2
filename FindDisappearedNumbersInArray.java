@@ -19,3 +19,22 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        if(nums == null || nums.length == 0) return new ArrayList();
+        Set<Integer> set = new HashSet<Integer>();
+        List<Integer> res = new ArrayList();
+        for(int x : nums){
+            set.add(x);
+        }
+        
+        for(int i = 1; i <= nums.length; i++){
+            if(!set.contains(i)){
+                res.add(i);
+            }
+        }
+        return res;
+    }
+}

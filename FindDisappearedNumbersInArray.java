@@ -1,6 +1,5 @@
 //TC: O(n), n: length of nums[]
 //SC: O(n)
-
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         if(nums == null || nums.length == 0) return new ArrayList();
@@ -24,7 +23,6 @@ class Solution {
 
 //TC: O(n), n: length of nums[]
 //SC: O(n)
-
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         if(nums == null || nums.length == 0) return new ArrayList();
@@ -87,6 +85,12 @@ class Solution {
 
 //TC: O(n), n: length of nums[]
 //SC: O(1)
+//Approach:
+//1. We iterate over the array and we mark the number at the nums[i] index negative, so as to restore later, that this number is present in the array.
+//2. So, if nums[i] = 7, we mark 7th index negative so as to indicate that 7 is present in the array.
+//3. At the end of this, if we find number at any of the indexes to be position, it means, no number was found for this index, so if i and j are the indexes 
+// which have positive numbers, it means i and j are the disappeared numbers.
+
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> res = new ArrayList();

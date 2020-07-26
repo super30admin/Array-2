@@ -1,7 +1,9 @@
+//TC: O(n), n: length of nums[]
+//SC: O(n)
+
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         if(nums == null || nums.length == 0) return new ArrayList();
-        Arrays.sort(nums);
         List<Integer> res = new ArrayList();
         
         int[] nums2 = new int[nums.length];
@@ -20,6 +22,8 @@ class Solution {
     }
 }
 
+//TC: O(n), n: length of nums[]
+//SC: O(n)
 
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
@@ -40,6 +44,8 @@ class Solution {
 }
 
 
+//TC: O(n), n: length of nums[]
+//SC: O(n)
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> res = new ArrayList<Integer>();
@@ -79,6 +85,8 @@ class Solution {
 }
 
 
+//TC: O(n), n: length of nums[]
+//SC: O(1)
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> res = new ArrayList();

@@ -1,3 +1,11 @@
+//TC: O(m*n), m and are the dimenstions of the board
+//SC: O(1)
+//Approach:
+//1. Followed the simple rules to iterate as per the question.
+//2. Just to make sure that we don't loose the initial state of the input while processing the board cells, we take new constants indicating
+// value transitions. When 0 -> 1, we put it as 2 and 1->0 is put as 3. This way, we make sure that from 2, we imput 0 for the current state and 1 for next state,
+// which is going to be out output.
+
 class Solution {
     public void gameOfLife(int[][] board) {
         int[][] dir = {{1,-1},{1,0},{1,1},{0,-1},{0,1},{-1,-1},{-1,0},{-1,1}};

@@ -1,3 +1,9 @@
+#TC: O(n)
+#SC: O(1)
+#Approach:
+#1. We take subarrays of size 2 so as to find the min and mix in those subarrays in 1 comparison for each of those subarrays. As we move forward with every subarray,
+# we compare local max with global max and local min with global min to keep up with the updated min and max.
+#2. This takes 3 comparisons for every subarray to find the global max and global min. Total number of comparisons come out to be 3(n/2) - 2.
 def getMinAndMax(nums):
     i = 0;
     j = 1;

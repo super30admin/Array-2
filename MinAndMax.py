@@ -23,6 +23,7 @@ def getMinAndMax(nums):
             global_min = mini
         i += 2
         j += 2
+        if i == len(nums): j -= 1
     return global_min, global_max
 
 

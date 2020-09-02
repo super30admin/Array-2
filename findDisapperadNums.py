@@ -3,7 +3,7 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
-
+# Approach: Done before the class
 # Your code here along with comments explaining your approach
 # Put the nums in a hashmap and then return the ones that are not in the hashmap from 1 to N
 

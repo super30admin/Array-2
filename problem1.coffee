@@ -6,6 +6,16 @@
 #
 #
 #// Your code here along with comments explaining your approach
+#
+# for all numbers
+#   use the number to index into nums
+#   set nums[index] = -1
+#
+# for all numbers (now modified)
+#   look for the 2 positive numbers, store their indices
+#
+# return indices+1
+
 findDisappearedNumbers = (nums) ->
   return [] if nums == null or nums.length == 0
 

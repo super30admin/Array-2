@@ -2,6 +2,10 @@
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 
+// The problem was to find min and max using less than 2 * (N - 2) comparison
+// No. of computations used in this approach is 3 * N/2 +2 
+
+
 public class Problem_2 {
 	
 	public int[] getMinMax(int[] nums) {

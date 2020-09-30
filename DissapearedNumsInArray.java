@@ -7,6 +7,7 @@
 // Your code here along with comments explaining your approach
 //This solution is to use the original array, mark nums[idx] as -ve if idx+1 num is present 
 //finally return all idx+1's where nums[idx] is positive
+
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         LinkedList<Integer> result = new LinkedList<Integer>();

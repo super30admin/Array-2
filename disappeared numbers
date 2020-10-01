@@ -1,0 +1,21 @@
+//time complexity: O(2n): O(n)
+//space complexity: O(1)
+/* approach: to check the presence of a particuler number in array, given array 1 to n, for every num we found in array, we got to index = num-1, and make the element[num-1] => negative, this proves the existance of num at index num-1; the index which is not negative, tells us about the num that is not present not present in array*/
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+       List<Integer> result = new ArrayList<Integer>();
+        
+        for(int i=0; i<nums.length; i++){
+            int index = Math.abs(nums[i]) - 1;
+            
+            if(nums[index] > 0)
+            nums[index] = -nums[index];
+         }
+        for(int i =0; i<nums.length; i++){
+            if(nums[i] > 0){
+                result.add(i+1);
+            }
+        }
+        return result;   
+    }
+}

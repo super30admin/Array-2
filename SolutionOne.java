@@ -7,6 +7,7 @@
 // Your code here along with comments explaining your approach
 /*Just change the no present at the index to negative
 * Pick the index of remaining positive no's
+*
 * */
 
 class SolutionOne {

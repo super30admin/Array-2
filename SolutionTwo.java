@@ -9,6 +9,7 @@
    For 0->1->3 replace alive i.e 1 value with 3 if count ==3
    For 1->0->2 replace dead value i.e 0 with 2 in case count is <2 and >3
 3. Change the original array back to 0/1 modified version not the original version.
+
  */
 
 class Solution {

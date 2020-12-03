@@ -1,47 +1,41 @@
-// 518. Coin Change 2 ( #PR 22 S30)
+// 448. Find All Numbers Disappeared in an Array (#30 S30)
 
-
-
- class Solution {
-    public int change(int amount, int[] coins) {
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+       List<Integer> result = new ArrayList<>();
+       
+        if(nums == null || nums.length == 0)
+            return result;
         
-        if (coins == null)
-            return 0;
-        int dp [][]= new int[coins.length+1] [amount+1];
-        
-        int rows = dp.length, cols = dp[0].length;
-        
-        for(int i =0; i<rows; i++)
+        for (int i = 0; i< nums.length; i++)
         {
-            dp[i][0] = 1;
-        }
-        
-        for(int i=1; i<rows; i++)
-        {
-            for (int j=1; j<cols; j++)
+            int index = Math.abs(nums[i])-1;
+            if(nums[index]> 0)
             {
-                if(j < coins[i-1]) {
-                    dp[i][j]= dp[i-1][j];
-                }
-                else
-                {
-                    dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]]; 
-                }
+                nums[index] *= -1;
             }
         }
         
-        return dp[rows-1][cols-1];
+        for ( int i =0; i< nums.length; i++)
+        {
+            if(nums[i] > 0)
+            {
+                result.add(i+1);
+                    
+            }
+        }
+        
+        return result;
     }
 }
 
-
 /*
+
 Complexity Analysis
 
-Time complexity: 
-O(N×amount), where N is a length of coins array.
+Time Complexity : 
+O(N)
 
-Space complexity: 
-O(amount) to keep dp array.
-
-*/ 
+Space Complexity : 
+O(1) since we are reusing the input array itself as a hash table and the space occupied by the output array doesn't count toward the space complexity of the algorithm. 
+*/

@@ -1,7 +1,7 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(MN), M-> number of rows, N-> number of columns
+// Space Complexity : O(1), no additional space used
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 public class GameOfLife{

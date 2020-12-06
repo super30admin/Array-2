@@ -1,0 +1,33 @@
+// Time Complexity :O(N)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Learned new Approach!
+
+
+// Your code here along with comments explaining your approach: Idea is to use STATE CHANGE strategy to negate/replace index of already present element. 
+//Hint: Take absolute value to get index; 
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        if(nums==null || nums.length==0){
+            return new ArrayList<>();
+        }
+        
+        int temp = 1;
+        List<Integer> lst = new ArrayList<>();
+        for(int i = 0 ; i < nums.length ; i++){
+            int index = Math.abs(nums[i])-1;      //IMP. Part
+            
+            if(nums[index]>0){
+                nums[index] *= -1;
+            }
+        }
+        
+        for(int i = 0 ; i < nums.length ; i++){
+            if(nums[i]>0){
+                lst.add(i+1);
+            }
+        }
+        return lst;
+    }
+}

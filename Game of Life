@@ -1,0 +1,64 @@
+// Time Complexity : O(m*n)
+// Space Complexity : O(1) ***
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Logic was clear but Coding it was difficult
+
+// Your code here along with comments explaining your approach: Idea is to mark board with 2 and 3 if they change from dead to live or vice-versa.
+// Later reset to original values of board
+
+SOLUTION:
+
+class Solution {
+    public void gameOfLife(int[][] board) {
+        if(board==null || board.length==0){
+            return;
+        }
+        // 0->1 =>2     Making Alive
+        // 1->0 => 3    Making Dead
+        
+        int m = board.length ;
+        int n = board[0].length ;
+        
+        for(int i = 0 ; i < m  ; i++){
+            for(int j = 0 ; j < n ; j++){
+                int live = countLive(board,i,j);
+
+              //  2 = dead && 3 = alive
+                if(board[i][j]==1 && (live>3 || live<2)){
+                    board[i][j] = 3;    //Marking cell dead
+                }else if(board[i][j]==0 && live==3){
+                    board[i][j] = 2;    //Marking cell alive
+                }
+            }
+        }
+        
+        for(int i = 0 ; i < m  ; i++){
+            for(int j = 0 ; j < n ; j++){
+                if(board[i][j]==2){
+                    board[i][j]=1;
+                }
+                else if(board[i][j]==3){
+                    board[i][j]=0;
+                }
+            }
+        }
+    }
+    
+    private static int countLive(int[][] board,int i, int j){
+        int[][] dirs = {{0,1},{1,0},{1,1},{1,-1},{-1,1},{-1,0},{0,-1},{-1,-1}};
+        int count = 0;
+        
+        for(int k = 0 ; k < dirs.length ; k++){            
+            int x = i - dirs[k][0];
+            int y = j - dirs[k][1];
+
+            if(x>=0 && y>=0 && x<board.length && y<board[0].length ){
+
+                if(board[x][y]==1 || board[x][y]==3){
+                    count++;
+                }
+            }
+        }
+            return count;
+        }
+}

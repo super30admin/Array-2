@@ -1,4 +1,7 @@
 def findMinMax(nums):
+    #Time Complexity: O(n)
+    #Space Complexity: O(1)
+    
     min = nums[0]
     max = nums[0]
 

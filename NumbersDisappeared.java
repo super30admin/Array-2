@@ -1,12 +1,12 @@
 //TC: O(n)
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        int maxNo = Integer.MIN_VALUE;
+        //int maxNo = Integer.MIN_VALUE;
         List<Integer> list = new ArrayList<Integer>();
         HashSet<Integer> hset = new HashSet<Integer>();
         for(int num : nums) {
             hset.add(num);
-            maxNo = Math.max(maxNo, num);
+            //maxNo = Math.max(maxNo, num); no need to find this as it is already given
 
         }
 

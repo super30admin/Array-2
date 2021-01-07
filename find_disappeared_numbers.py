@@ -8,7 +8,6 @@
 # Space : O(N)
 
 
-
 # Brute Force - Time Limit exceeded
 def findDisappearedNumbers(nums):
 
@@ -22,8 +21,8 @@ def findDisappearedNumbers(nums):
         return res
     
 
-
 # Approach using hashmaps
+# can be done with set instead
 
 def findDisappearedNumbers(nums):
     
@@ -42,6 +41,41 @@ def findDisappearedNumbers(nums):
             result.append(num)
             
     return result
+
+
+
+# Approach to optimize space to O(1) - Technique: Temporary State Change
+# Key here is to find the index corresponding to a value. For example if val = 4, the index representing 4 would be val - 1, ie 3
+# This holds true since it is given [1, N]
+# Once we find this index, we change the state of the number to negative. We do this only for vals > 0 so as to not reverse sign of already reversed number, (in case of duplicates)
+# Iterate over the array again and check which numbers are positive and get the corresponding number as index + 1
+# If not reverse array back to original so as to not mutate array
+
+def missingElement(array):
+    
+    result = []
+    
+    for num in array:
+        index = abs(num) - 1 # getting corresponding index
+        if array[index] > 0: # to avoid reversing duplicates back to positive
+            array[index] *= -1
+            
+ 
+            
+    for i in range(len(array)):
+        if array[i] > 0:
+            missing_number = i + 1
+            result.append(missing_number)
+            
+        else:
+            array[i] *= -1
+            
+    
+    
+    
+    
+arr = [4,3,2,7,8,2,3,1]
+print(missingElement(arr))
             
             
             

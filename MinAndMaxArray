@@ -1,0 +1,55 @@
+/*
+TC: O(n)
+SC: O(logn)
+ */
+
+class MinAndMaxArray {
+
+    private int[] getMinMax(int[] nums) {
+
+        return helper(nums, 0, nums.length - 1);
+    }
+
+    private int[] helper(int[] nums, int i, int j) {
+
+        int min;
+        int max;
+
+        if (i == j) {
+            max = nums[i];
+            min = nums[i];
+        } else if (i == j - 1) {
+            if (a[i] > a[j]) {
+                max = a[i];
+                min = a[j];
+            } else {
+                max = a[j];
+                min = a[i];
+            }
+        }
+        else
+
+        {
+            int mid = i + (j - i) / 2;
+            int left[] = helper(nums, i, mid);
+            int right[] = helper(nums, mid + 1, j);
+
+            if (left[0] > right[0]) {
+                max = left[0];
+            }
+            else{
+                max = right[0];
+            }
+            if (left[1] < right[1])
+            {
+                min = left[1];
+            }
+            else{
+                min = right[1];
+            }
+            return new int[]{max, min};
+        }
+    }
+
+}
+

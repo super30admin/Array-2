@@ -47,8 +47,8 @@ class MinAndMaxArray {
             else{
                 min = right[1];
             }
-            return new int[]{max, min};
         }
+        return new int[]{max, min};
     }
 
 }

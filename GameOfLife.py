@@ -68,7 +68,7 @@ class Solution:
                 continue
 
             cell = self.board[r][c]
-            if cell == LIVE or cell == WAS_LIVE:                        # WAS_LIVE means WILL_DIE
+            if cell == LIVE or cell == WAS_LIVE:
                 count += 1
 
         return count

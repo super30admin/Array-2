@@ -1,0 +1,22 @@
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        //Time Complexity is O(n) and Space Complexity is O(1)
+        ArrayList<Integer> list = new ArrayList<>();
+        if(nums.length==0 || nums == null)
+        return list;
+        
+        for(int i=0;i<nums.length;i++){
+            int a = Math.abs(nums[i]);
+            if(nums[a-1]>0)
+            nums[a-1]=-nums[a-1];
+            
+        }
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>0)
+            list.add(i+1);
+        }
+        
+        return list;
+    }
+}

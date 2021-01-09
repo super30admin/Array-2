@@ -74,7 +74,8 @@ class Solution:
         return board
 
 
-# Extra question: find maximum and minimum element in a given array: (discussed in class)
+# Extra question: find maximum and minimum element in a given array: (discussed in class), Time Complexicity: O(3*n/2) 
+# {specifically mentioned in class, please verify}
 
 def findMax(array):
     

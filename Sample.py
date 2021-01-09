@@ -72,3 +72,32 @@ class Solution:
                     board[i][j] = 1
                     
         return board
+
+
+# Extra question: find maximum and minimum element in a given array: (discussed in class)
+
+def findMax(array):
+    
+    if len(array) == 0: return
+    left = 0; right = len(array)-1
+
+    while left < right:
+        if array[left] < array[right]:
+            left += 1
+        else:
+            right -= 1
+
+    return array[left]
+
+def findMin(array):
+    
+    if len(array) == 0: return
+    left = 0; right = len(array)-1
+    
+    while left < right:
+        if array[right] < array[left]:
+            left += 1
+        else:
+            right -= 1
+
+    return array[right]

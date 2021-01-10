@@ -1,0 +1,59 @@
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+
+
+import java.lang.Math; 
+  
+public class Main {
+ 
+    static ArrayList<Integer> getMinMax(int arr[], int n) {
+        ArrayList<Integer> ret = new ArrayList<>();
+        if(arr == null || arr.length == 0) return ret;
+        int pair = n/2;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        int f = 0;
+        int s = 1;
+        int count = 0;
+        // go through the array and compare pairs at once stop once you have finished the arry
+        while(f < n - 1){
+        	//this checks all even pairs 
+            if(count < pair){
+                max = Math.max(max,Math.max(arr[f],arr[s]));
+                min = Math.min(min,Math.min(arr[f],arr[s]));
+                f += 2;
+                s += 2;
+                count += 1;
+            }
+            //if there is not an even lenght array then this will check the last element against the global max and min.
+            else{
+                s +=1;
+                f = s;
+                max = Math.max(max,Math.max(arr[f],arr[s]));
+                min = Math.min(min,Math.min(arr[f],arr[s]));
+                f += 1;
+            }
+        }
+        ret.add(max);
+        ret.add(min);
+        return ret;
+    }
+ 
+    /* Driver program to test above function */
+    public static void main(String args[]) {
+        int arr[] = {1000, 11, 445, 1, 330};
+        int arr_size = arr.length;
+        ArrayList<Integer> x = getMinMax(arr, arr_size );
+        System.out.println(x);
+        System.out.printf("\nMinimum element is %d", Collections.min(x));
+        System.out.printf("\nMaximum element is %d", Collections.max(x));
+        
+     
+ 
+    }
+}

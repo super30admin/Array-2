@@ -1,0 +1,33 @@
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        ArrayList<Integer> ret = new ArrayList<>();
+        //check the null and 0 length 
+        if(nums == null || nums.length == 0) return ret;
+        //loop through the array to assign negative values or postive values
+        for(int i = 0; i < nums.length; i++){
+        	//find the index
+            int temp = Math.abs(nums[i]) - 1;
+            // if its positive make it negative
+            if(nums[temp] > 0){
+                nums[temp] = nums[temp] * -1;
+            }
+        }
+        //loop to find the positives
+        for(int i = 0; i < nums.length; i++){
+        	//if its positive than add the index plus 1 to the missings index return array
+            if(nums[i] > 0){
+                ret.add(i+1);
+            }
+        }
+        return ret;
+    }
+}

@@ -1,6 +1,32 @@
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> list = new ArrayList<Integer>();
+        if(nums == null || nums.length==0){
+            return list;
+        }
+        for(int x : nums){
+            int index = Math.abs(x) - 1;
+            
+            if(nums[index]>0){
+                nums[index] *= -1;
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>0){
+                list.add(i+1);
+            }
+        }
+        return list;
+    }
+}
+//time : O(n)
+//space : O(1)
+Leetcode accepted
+
+2nd approach in O(n)_SC
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> list = new ArrayList<Integer>();
         boolean[] arr = new boolean[nums.length];
         for(int i=0;i<nums.length;i++){
             arr[nums[i]-1] = true;

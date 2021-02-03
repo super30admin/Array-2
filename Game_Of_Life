@@ -12,7 +12,7 @@ class Solution {
         
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                int count = countLives(board,i,i,n,m);
+                int count = countLives(board,i,j,n,m);
                 //1st case
                 if(board[i][j] == 1 && (count > 3 || count < 2)){
                     board[i][j] = 2;
@@ -51,4 +51,6 @@ class Solution {
 }
 
 
-// Need to work on it!
+//time complexity : O(n X m) = O(n)
+//space complexity : O(1)
+// leetcode accepted

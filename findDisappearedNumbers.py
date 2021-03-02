@@ -1,3 +1,11 @@
+'''
+Time Complexity: O(n) because we are traversing through the list twice i.e., 2n times but asymmptotically O(2n)---> O(n)
+Space Complexity: O(1) Constant space because we are using only resultant list and no extra space
+Leetcode: Success!
+Problems: None
+'''
+
+
 class Solution:
     def findDisappearedNumbers(self, nums):
         # [4,3,2,7,8,2,3,1]
@@ -5,7 +13,7 @@ class Solution:
         if nums==None or len(nums)==0:
             return [0]
 
-        # initialize the variables for temp index holder and resultant list/array
+        # initialize the variables for temp index holder and resultant list
         idx = 0
         res = []
 

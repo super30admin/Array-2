@@ -1,7 +1,7 @@
 #Time Complexity:O(mn)
 #Space Complexity:O(1)
 class Solution():
-    def countLives(self, board, i, j, m, n):
+    def countLives(board, i, j, m, n):
         result = 0
         direction=[[0,-1],[0,1],[-1,0],[1,0],[-1,-1],[-1,1],[1,-1],[1,1]]
 
@@ -12,8 +12,7 @@ class Solution():
                 result += 1
         return result
 
-
-    def gameOfLife(self, board):
+    def gameOfLife(self, board: List[List[int]]) -> None:
         if (board == None or len(board)==0 or len(board[0])==0):
             return None
         # 1 ----> 0 = 3
@@ -22,7 +21,7 @@ class Solution():
         n = len(board[0])
         for i in range(m):
             for j in range(n):
-                count = Solution.countLives(object,board,i,j,m,n)
+                count = Solution.countLives(board,i,j,m,n)
                 if (board[i][j]==1 and (count < 2 or count > 3)): #it dies
                     board[i][j] = 3
                 if (board[i][j]==0 and count == 3): #lives
@@ -33,3 +32,6 @@ class Solution():
                     board[i][j] = 0
                 if (board[i][j] == 2):
                     board[i][j] = 1
+        """
+        Do not return anything, modify board in-place instead.
+        """

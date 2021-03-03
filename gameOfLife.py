@@ -2,7 +2,7 @@
 Time complexity: O(m*n) because we traverse through the matrix
 Space Complexity: O(1) because we are not using any extra space --> smae board and only res variable for count that keeps updating
 Leetcode: Sucess!
-Problem: None. Just developing the concept a little
+Problem: None. Just developing the concept a little. understanding at the countLives.
 '''
 
 class Solution:
@@ -47,12 +47,12 @@ class Solution:
         r = 0
         c = 0
         for dir in dirs:
-            print("i: ",i)
+            #print("i: ",i)
             r = i + dir[0]
-            print("r: ",r)
-            print("j: ", j)
+            #print("r: ",r)
+            #print("j: ", j)
             c = j + dir[1]
-            print("c: ",c)
+            #print("c: ",c)
             # checking for alive neighbors
             if (r>=0 and r < m and c >= 0 and c < n and (board[r][c]==1 or board[r][c]==3)):
                 # add to the count the resultant count

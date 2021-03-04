@@ -1,3 +1,6 @@
+//TC: O(2 m*n) --> O(m*n) - We are iterating the each elements two times. 1) To change the state to temporary state 2) Replace the temp state to actual values.
+//SC: O(1) - We are not using a extra value.
+
 public class GameOfLife_289 {
 
     int LIVE_TO_DEAD = 10;

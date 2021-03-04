@@ -8,14 +8,16 @@ public class DisappearedInAnArray_448 {
     //TC: We are adding the all values in a hash set. So it will be O(N) and checking the indices present or not. It need one more O(N) . So it will be O(2N)
     //SC: We have hash set it id not the the return type, So it is O(N)
     List<Integer> findTheMissingElementsBruteForceSolution(int[] array) {
-        HashSet cache = new HashSet(); // O(N)
         List<Integer> missingElements = new ArrayList<Integer>();
+        if(array == null || array.length==0) return missingElements;
+        HashSet cache = new HashSet(); // O(N)
+        
 
         for(int i=0;i<array.length;i++) { //O(N)
             cache.add(array[i]);
         }
 
-        for(int i=1;i<array.length;i++) { //O(N)
+        for(int i=0;i<array.length;i++) { //O(N)
             if(!cache.contains(i)) {
                 missingElements.add(i);
             }
@@ -28,6 +30,7 @@ public class DisappearedInAnArray_448 {
     //We just travers to all the elements and make those modify the values to negative if present.
     List<Integer> findTheMissingElementsOptimalSolution(int[] array) { 
         List<Integer> missingElements = new ArrayList<Integer>();
+        if(array == null || array.length==0) return missingElements;
         for(int i =0;i<array.length;i++) { // O(N)
             int index = Math.abs(array[i]) -1;
             if(array[index] > 0) {

@@ -1,5 +1,5 @@
 """
-Intuition:  Because each cell has to be changed wrt to the original state of the matrix, we need to perserve the matrix,
+Intuition:  Because each cell has to be changed wrt to the original state of the matrix, we need to perserve the matrix.
 Each transition can be recorded: 
 1) Transition from 1 ---> 0 == 3 ( any number can be used here)
 2) Transition from 0 ---> 1 == 2 ( any number can be used here)

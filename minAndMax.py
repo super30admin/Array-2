@@ -1,6 +1,7 @@
 """
 Intuition: Take 2 values and compare them together and then compare it with the min and max.
-Comparisions : 1.5 * N, where  N = number of elements
+Comparisions for each pair will be 3. 
+Total Comparisions : 1.5 * N, where  N = number of elements
 #####################################################################
 """
 def getMinAndMax(nums):

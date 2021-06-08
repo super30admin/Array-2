@@ -1,4 +1,7 @@
 // Using Pairs
+// TC: O(n)
+// SC: O(1)
+// Number of comparisons would be 2 + 3(n - 2)/2 => 3(n - 2)/2
 public class MaxAndMinInArray {
     public static int[] searchMinMax(int[] a) {
         int n = a.length;

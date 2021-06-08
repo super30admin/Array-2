@@ -1,4 +1,7 @@
 // Brute Force
+// TC: O(n)
+// SC: O(1)
+// Number of comparisons would be 1 + 2(n - 2)
 public class MaxAndMinInArrayBruteForce {
     public static int[] searchMinMax(int[] a) {
         int n = a.length;

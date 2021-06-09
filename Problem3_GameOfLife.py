@@ -40,8 +40,7 @@ class Solution:
         neighbors = \
         [(-1, 0), (-1, 1), (0,1), (1,1), (1,0), (1, -1), (0,-1), (-1, -1)]
         # 0°         45°    90°    135°   180°    225°     270°     315°
-        # Top    Top-Right Right ...
-
+        # Top(T)     TR      R      BR     L      BL        L       TL
         m = len(board)
         n = len(board[0])
 

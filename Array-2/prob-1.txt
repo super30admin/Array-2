@@ -1,0 +1,20 @@
+// time complexity = O(n)
+// space comp = O(1)
+// solution executed on leet code
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> l=new ArrayList<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            int val=Math.abs(nums[i]); // gives the number in array which is to be considered as index
+            if(nums[val-1]>0)
+                nums[val-1]*=-1;  // take the val and mark this index value as negative which mean is present 
+        }
+        for(int i=0;i<nums.length;i++)
+        {
+            if(nums[i]>0)
+                l.add(i+1);// if ele not negative then that index was got in above iteration and add index+1 as value
+        }
+        return l;
+    }
+}

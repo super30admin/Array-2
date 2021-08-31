@@ -1,3 +1,15 @@
+# Time Complexity : O(N)
+# Space Complexity : O(1) as no extra space, just the output array
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : No
+
+# take the elements in pairs, to reduce the number of comparisons
+# comparisons reduce from 2n to 1.5n as we pair up the elements 
+# so the becomes n/2 and we do 3 comparisons for each pair
+# comparison one: nums[i] > nums[i+1] 
+# if nums[i] is greater than nums[i+1], 
+# then compare nums[i] with current max,
+# then compare nums[i+1] with current min
 
 def minmax(nums):
     mymax = nums[0]

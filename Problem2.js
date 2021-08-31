@@ -1,4 +1,4 @@
-// Time Complexity : O(n)
+// Time Complexity : O(n)  Decresed the swaps from 2n to 1.5n
 // Space Complexity : O(1)
 // Did this code successfully run : Yes
 
@@ -22,16 +22,18 @@ function findMinMax(arr) {
         result.min = arr[0];
     }
 
-    for (i = 2; i < n; i++) {
-        if (arr[i] < result.min)
-            result.min = arr[i];
-
-        else if (arr[i] > result.max)
-            result.max = arr[i];
+    for (i = 2; i < n - 1; i++) {
+        if (arr[i] < arr[i + 1]) {
+            console.log(arr[i], arr[i + 1]);
+            result.max = Math.max(result.max, arr[i + 1]);
+            result.min = Math.min(result.min, arr[i]);
+        } else {
+            (arr[i] > arr[i + 1])
+            result.max = Math.max(result.max, arr[i]);
+            result.min = Math.min(result.min, arr[i + 1]);
+        }
     }
 
     return result;
 
 }
-
-findMinMax([4, 76, 2, 100])

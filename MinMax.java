@@ -1,3 +1,13 @@
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+
+// Your code here along with comments explaining your approach
+/**
+ * Goal is to reduse the number of comparisons So we need to take pairs of
+ * numbers and compair them if they are greater or lesser the resultent must be
+ * compared to global min max so that the number of comparisions will be redused
+ * by 25%
+ */
 public class MinMax {
     public void printMinMax(int[] nums) {
         int min = Integer.MAX_VALUE;

@@ -1,0 +1,28 @@
+//Approach 1 : Using extra space 
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        //null check -- not required in this question 
+        if(nums.length == 0 || nums=null)  return new ArrayList<>();
+        
+        HashSet<Integer> set= new HashSet<>();
+        List<Integer> list = new ArrayList<>();
+        
+        for(int num :nums){
+            set.add(num);
+        }
+        
+        //iteration to check if set contains value. if not add to the list
+        for(int i=1;i<=nums.length;i++){
+            if(!set.contains(i)){
+                list.add(i);
+            }
+        }
+        return list;
+    }
+}
+
+//time : O(n) -- 2n where n is the num of different iteraton for elements of num
+//space : O(n) -- using space for hashset for all elements
+//ran successfully in leetcode
+//didnt face difficulty only the fllowup without using extra sapce i need to solve it.

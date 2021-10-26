@@ -2,6 +2,7 @@
 //Space Complexity = O(1)
 //The total number of comaprison over here is 2*N;
 //Where N is the size of the array.
+//Question: Given an array of numbers of length N, find both the minimum and maximum. Follow up : Can you do it using less than 2 * (N - 2) comparison
 #include<bits/stdc++.h>
 using namespace std;
 

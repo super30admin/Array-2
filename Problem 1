@@ -1,0 +1,29 @@
+//Time:O(n)
+//SPace:O(1)
+//Leetcode:Yes
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        int index=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            index = Math.abs(nums[i])-1; //  Index at where number should be placed
+            if(nums[index]>0)
+                nums[index] = -1 *nums[index]; // Convert the number at the index to negative to mark the index as visited.
+        }
+        for(int i=0;i<nums.length;i++)
+        {
+            if(nums[i]<0)
+            {
+                nums[i] = -1*nums[i]; // COnverting Array back to original Array
+                
+            }
+            else
+            {
+                result.add(i+1); // Add the indexes which where not having negative value (i.e. Not visited). As those are the ones which are missinf.
+            }
+        }
+        return result;
+    }
+}

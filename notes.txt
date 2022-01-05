@@ -10,5 +10,8 @@ Approaches
 
 2) Game of life
 State change : record state change(alive->dead or viceversa) as 2 or 3 etc 
+Use direction(dir) array
 
 Basic Conditions for BFS & DFS: -> connected components (not only 1 or two level or neighbours)
+
+3) max & min

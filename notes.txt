@@ -1,0 +1,8 @@
+1) find missing number
+
+Approaches
+1) Brute force
+2) Sort + search
+3) Use hash set and search (On + On)
+4) State change of same array
+  In place change to -1 

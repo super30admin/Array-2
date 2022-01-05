@@ -1,3 +1,6 @@
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+
 def compare(arr):
     
     min = 0

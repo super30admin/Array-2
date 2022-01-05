@@ -1,0 +1,66 @@
+// Time Complexity : O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+//Change of state (we can even do this problem without chnging state if we use another array)
+//Concept of directions array
+//As we want to use the same array here and not use extra space we will change the states of the elements based upon the mentioned
+//rules. we will decide specific number for 0 and 1 when we are changing that we we can keep track of previous value because if its change dto 0 or 1, that will affect the answer for next element. 
+//suppose we are taking 2 to mark 0-> 1(0 changing to one) means if we encounter 2 that means it was 0
+//a smart move here is to use dir[][] matrix to calculate 8 neighbors of any element which consiste of indexes corresponding to current indices of element
+//for example if we want elemet to left that means{i, j}->{0, -1}..same row but column-1;
+//we apply all edge cases before counting live members around it.
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    
+       int[][] dirs= new int[][] {{0,-1},{0,1},{-1,0},{1,0},{-1,-1},{1,-1},{-1,1},{1,1}};
+        int n;
+        int m;
+    
+    public void gameOfLife(int[][] board) {
+        if(board == null) return;
+        n= board.length;
+        m = board[0].length;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m;j++){
+                int live = countLive(board, i, j);
+                //rule 1 and 3
+                
+                if(board[i][j]==1 && (live<2 || live>3)){
+                    board[i][j]=2;
+                }
+                //rule 4
+                if(board[i][j]==0 &&(live==3)){
+                    board[i][j]=3;
+                }
+            }
+        }
+            // changing board to next state by mapping 2 and 3 correctly back to 0 and 1
+             for(int i=0; i<n; i++){
+            for(int j=0; j<m;j++){
+                if(board[i][j]==2) board[i][j]=0;
+                  if(board[i][j]==3) board[i][j]=1;
+                }
+            }
+        
+        }
+    //function to count the nighbors using dirs[][] and considering edge cases
+    public int countLive(int[][] board, int i, int j){
+        int live=0;
+        for(int[] dir : dirs){
+            int r= i + dir[0];
+            int c = j + dir[1];
+            if(r>=0 && r<n && c>=0 && c<m && (board[r][c]==1 || board[r][c]==2)){
+                live++;
+            }
+        }
+        return live;
+    }
+
+           
+    }
+        
+    

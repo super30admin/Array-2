@@ -1,3 +1,10 @@
+'''
+
+TC: O(n)
+SC: O(1)
+
+Intuition: Use pair, reduces to 3n/2
+'''
 def maxMin(arr):
     if not arr:
         return None, None

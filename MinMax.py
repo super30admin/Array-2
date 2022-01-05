@@ -6,4 +6,3 @@
 
 # Your code here along with comments explaining your approach
 
-'''Have not figured out the optimal solution for this question.'''

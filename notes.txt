@@ -1,8 +1,14 @@
-1) find missing number
+Imp concept : temporary state change
+1) find missing numbers
 
 Approaches
 1) Brute force
 2) Sort + search
 3) Use hash set and search (On + On)
 4) State change of same array
-  In place change to -1 
+  Inplace change to -1 
+
+2) Game of life
+State change : record state change(alive->dead or viceversa) as 2 or 3 etc 
+
+Basic Conditions for BFS & DFS: -> connected components (not only 1 or two level or neighbours)

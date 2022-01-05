@@ -3,7 +3,7 @@
 TC: O(n)
 SC: O(1)
 
-Intuition; Use pair, reduces comparision to 3n/2
+Intuition: using the fact that 1<=nums<=n where n is the length of array and index of the array
 '''
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:

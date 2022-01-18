@@ -1,0 +1,63 @@
+// Time Complexity : check below
+// Space Complexity :check below
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+Solution 1- Brute force - Using a counter array to store whether the element is encountered in nums.
+            TC - O(n)   SC - O(n)
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        
+        int[] counter = new int[nums.length + 1];
+        
+        for(int i: nums)
+        {
+            counter[i] = i;
+        }
+        
+        for(int i = 1; i <= nums.length; i++)
+        {
+            if(counter[i] == 0)
+            {
+                list.add(i);
+            }
+        }
+        return list;
+    }
+}
+
+
+Solution 2 - In place algorithm - 
+             TC - O(n)  SC - O(1)
+             
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        
+        // we will proceed to nums from 0 to nums.length and then at every value, we go to index of that value and change it's value to negative.
+        // If the number after full iteration is positive, we know that's the value that is not present in nums and we will add it to resultant list
+        for(int i = 0; i < nums.length; i++)
+        {
+            int index = Math.abs(nums[i]);
+            if(nums[index - 1] > 0)
+            {
+                nums[index - 1] *= -1;
+            }
+        }
+        
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] > 0)
+            {
+                list.add(i + 1);   // add value to our resultant list
+            }
+            else
+            {
+                nums[i] *= -1;   // revert values of input array to original values
+            }
+        }
+        return list;
+    }
+}

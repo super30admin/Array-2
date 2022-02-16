@@ -2,7 +2,7 @@
     //time - o(n*m)
     //Ran on leeetcode successfully : Yes
     // Problem faced  : No
-    //Approach : get live neighbors count if its going from dead to live mark -1 , if cell going from live to dead mark -1
+    //Approach : get live neighbors count if cell is going from dead to live mark -2 , if cell going from live to dead mark -1
 class Solution {
     public void gameOfLife(int[][] board) {
 

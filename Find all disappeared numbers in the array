@@ -1,0 +1,27 @@
+//TC = O(n)
+//SC = O(1)
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        List<Integer> result = new ArrayList<>();
+        
+        for(int num : nums){
+            
+            int index = Math.abs(num)-1;  //we are taking absolute value of nums as num can also be neg
+            
+            if(nums[index]>0){
+                nums[index] = -nums[index];  //marking neg 
+            } 
+        }
+        
+        for(int i =0; i<nums.length; i++){
+            if(nums[i]>0){     //if its positive then add to the list and return 
+                
+                result.add(i+1);  //i+1 because we are taking index from 0
+            }
+        }
+        
+        return result;
+        
+    }
+}

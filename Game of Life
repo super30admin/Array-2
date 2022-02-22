@@ -1,0 +1,79 @@
+//TC = O(mn)
+//SC = O(1)
+class Solution {
+    
+    //instead of checking 8 directions
+    private int[][] directions = new int[][]{
+        {-1,-1}, //Left up
+        {-1, 0}, //Up
+        {-1, 1}, //Right Up
+        {0, 1},  //Right
+        {1, 1},  //Right Down
+        {1, 0},  //Down
+        {1, -1}, //Left Down
+        {0, -1}  //Left
+    };
+    
+    private int  getLiveNeighboursCount(int[][] board, int i, int j){
+        int m = board.length;
+        int n = board[0].length;
+        
+        int liveNeighCount = 0;
+        for(int[] direction : directions){
+            
+            int x = i + direction[0];
+            int y = j + direction[1];
+            
+            if(x>=0 && x<m && y>=0 && y<n){
+                if(board[x][y] == -2 || board[x][y] == 1){
+                    liveNeighCount++;
+                }
+            }
+        }
+        
+        return liveNeighCount;
+    }
+    
+    public void gameOfLife(int[][] board) {
+        
+        int m = board.length;
+        int n = board[0].length;
+         
+        
+        for(int i=0; i<m;i++){
+            for(int j=0; j<n; j++){
+                
+                int liveNeighCount = getLiveNeighboursCount(board, i, j);
+                
+                if(board[i][j]==1){  //Live
+                    
+                    //<2 -> dead
+                    // ==2 or ==3 -> alive
+                    // >3 -> dead
+                    if(liveNeighCount<2 || liveNeighCount>3){
+                        board[i][j] = -2;
+                    }
+                } else{
+                    
+                    if(liveNeighCount ==3){ //Dead
+                        board[i][j] = -1;
+                    }
+                }
+                
+            }
+        }
+        for(int i=0; i<m;i++){
+            for(int j=0; j<n; j++){
+                
+                //changing to its original form
+                if(board[i][j] == -1){
+                    board[i][j] =1;
+                }
+                if(board[i][j] == -2){
+                    board[i][j] =0;
+
+                }
+            }
+        }
+    }
+}

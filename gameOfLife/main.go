@@ -31,6 +31,8 @@ Approach 2:
 - To mark a cell alive
 	- we are supposed to use 1
 	- but now we will use 3 ( which means it was previously dead )
+- Time: o(mn)
+- Space: o(1)
 
 - 3 = alive ( but was previously dead )
 - 2 = dead ( but was previously alive )

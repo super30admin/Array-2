@@ -1,4 +1,4 @@
-// Time Complexity : O(m*n) where m is the no of rows in input, n is the number of columns in input
+// Time Complexity : O(n) where n is the length of the input
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no

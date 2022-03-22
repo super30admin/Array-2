@@ -1,7 +1,11 @@
 // Time Complexity : O(n) , n is length of input
 // Space Complexity : O(1) . result space in not extra space
-// Did this code successfully run on Leetcode :
-// Three line explanation of solution in plain english
+// Did this code successfully run on Leetcode : yes
+// Three line explanation of solution in plain english :
+/*
+In order to record that a number (num) exists in input array, we go to (num-1)th index and make it negative (if not already negative)
+Then we traverse the array again and look for positive values. Suppose i index has positive values, missing number is i+1
+*/
 
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {

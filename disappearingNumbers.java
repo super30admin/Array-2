@@ -4,6 +4,7 @@ TC: O(n)
 SC: O(1)
 */
 class Solution {
+    // Approach 1: swap and place numbers in the right index
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> result = new ArrayList<>();
         int n = nums.length;
@@ -32,5 +33,30 @@ class Solution {
         int temp = nums[index1];
         nums[index1] = nums[index2];
         nums[index2] = temp;
+    }
+
+    // Approach 2: Mark number as visited by making it negative
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        int n = nums.length;
+        
+        if (nums == null || n == 0) {
+            return result;
+        }
+        
+        for (int i = 0; i < n; ++i) {
+            // System.out.println(Arrays.toString(nums));
+            int index = Math.abs(nums[i]) - 1;
+            if (nums[index] < 0)
+                continue;
+            nums[index] = -nums[index];
+        }
+        
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] >= 0) {
+                result.add(i + 1);
+            }
+        }
+        return result;
     }
 }

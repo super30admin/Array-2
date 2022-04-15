@@ -1,5 +1,7 @@
 public class GameOfLife {
 
+    // Time complexity: O(m * n)
+    // Space complexity: O(1)
     int m,n;
     public void gameOfLife(int[][] board) {
         if(board == null || board.length == 0) return;

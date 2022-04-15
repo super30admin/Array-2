@@ -8,3 +8,8 @@ Given an array of numbers of length N, find both the minimum and maximum. Follow
 
 ## Problem3 (https://leetcode.com/problems/game-of-life/)
 
+
+
+// problem1.java has O(n) time complexity and O(1) space complexity
+
+// problem2.java has O(m*n) time complexity and O(1) space complexity

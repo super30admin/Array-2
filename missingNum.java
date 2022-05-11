@@ -34,6 +34,11 @@ class Solution {
 // Space Complexity :constant
 // Did this code successfully run on Leetcode :Yes
 // Any problem you faced while coding this :No
+
+// going through each index, we mark num[index]-1 negative if it is already not
+// negative
+// at the end we check which indices are not negative that means we didn't come
+// across that number so we add index+1 in result array
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> result = new ArrayList<>();

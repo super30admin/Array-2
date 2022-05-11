@@ -32,5 +32,38 @@ namespace Algorithms
 
             return result;
         }
+
+        /// <summary>
+        /// State Change
+        /// Space Complexity O(1)
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public IList<int> FindDisappearedNumbers_StateChange(int[] nums)
+        {
+            List<int> result = new List<int>();
+
+            for(int i= 0; i < nums.Length; i++)
+            {
+                int index = Math.Abs(nums[i]) - 1;
+                if (nums[index] > 0) nums[index] *= -1;
+            }
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if(nums[i] < 0)
+                {
+                    nums[i] *= -1;
+                }
+                else
+                {
+                    result.Add(i + 1);
+                }
+            }
+
+
+            return result;
+
+        }
     }
 }

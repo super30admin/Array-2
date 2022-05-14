@@ -1,3 +1,5 @@
+// Time Complexity :O(m*n)
+// Space Complexity :O(1)
 class Game{
     public void gameOfLife(int[][] n) {
         int a=n.length,b=n[0].length;

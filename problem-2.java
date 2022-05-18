@@ -1,49 +1,49 @@
-// Time Complexity : O(8*m*n)
+// Time Complexity : O(n)
 // Space Complexity : O(1)
+// Number of comparisons : 3*(n/2)= 1.5n < 2n
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
-class Solution {
-    //State Change Method
-    int wasAlive=2;
-    int wasDead=3;
-    public void gameOfLife(int[][] board) {
-        for(int i=0; i<board.length; i++){
-          for(int j=0; j<board[0].length; j++){
-              if(countAlive(board, i, j)<2 || countAlive(board, i, j)>3){
-                  if(board[i][j]==1){
-                      board[i][j]=wasAlive;
-                  }
-              }
-              else if(countAlive(board, i, j)==3){
-                  if(board[i][j]==0){
-                      board[i][j]=wasDead;
-                  }
-              }  
-          }  
-        }
-        
-        for(int i=0; i<board.length; i++){
-          for(int j=0; j<board[0].length; j++){
-            if(board[i][j]==wasAlive){
-                board[i][j]=0;
+// "static void main" must be defined in a public class.
+public class Main {
+    
+    static class Pair {
+        int min;
+        int max;
+    }
+    public static Pair getMinMax(int arr[], int size){
+        Pair p= new Pair();
+        p.min=Integer.MAX_VALUE;
+        p.max=Integer.MIN_VALUE;
+        int i;
+        for(i=0; i<size-1; i++){
+            if(arr[i]<arr[i+1]){
+                if(arr[i]<p.min) p.min=arr[i];
+                if(arr[i+1]>p.max) p.max=arr[i+1];
             }
-            else if(board[i][j]==wasDead){
-                  board[i][j]=1;
+            else{
+                if(arr[i]>p.max) p.max=arr[i];
+                if(arr[i+1]<p.min) p.min=arr[i+1];
             }
-          }  
+            i++;
         }
+        if(i<size){
+            if(arr[i]>arr[i-1]){
+                if(arr[i-1]<p.min) p.min=arr[i-1];
+                if(arr[i]>p.max) p.max=arr[i];
+            }
+            else{
+                if(arr[i-1]>p.max) p.max=arr[i-1];
+                if(arr[i]<p.min) p.min=arr[i];
+            }
+        }
+        return p;
     }
     
-    public int countAlive(int[][] board, int i, int j){
-        int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}, {-1 ,1}, {1 ,1}, {1 ,-1}, {-1 ,-1}};
-        int count=0;
-        for(int[] dir : dirs){
-            int r=i+dir[0];
-            int c=j+dir[1];
-            if(r>=0 && r<board.length && c>=0 && c<board[0].length && (board[r][c]==1 || board[r][c]==wasAlive)){
-                count++;
-            }
-        }
-        return count;
+    public static void main(String[] args) {
+        int arr[] = {1000, 11, 445, 1, 330, 3000, 5000};
+        int arr_size = 7;
+        Pair minmax = getMinMax(arr, arr_size);
+        System.out.printf("\nMinimum element is %d", minmax.min);
+        System.out.printf("\nMaximum element is %d", minmax.max);
     }
 }

@@ -1,6 +1,6 @@
 """
 Leetcode - https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/ (submitted)
-TC- , SC-
+TC- O(N) , SC- O(1)/O(N)
 Lecture- https://youtu.be/gfbrKPooo2w
 FAQ-
 Using extra space? Use hashmap and look for 1:N exists if not add it to your answer array

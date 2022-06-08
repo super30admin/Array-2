@@ -41,6 +41,7 @@ class Solution:
                 else:
                     board[row][col] = 0
                     
-        
+        # time: o(1)
+        # space: o(nm)
 
         

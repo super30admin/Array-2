@@ -2,7 +2,7 @@
 //SC: O(n) used boolean array of space n+1
 //Leetcode : succesful 
 
-// Tried to optimize but not able to
+// BRUTE FORCE
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         ArrayList<Integer> list = new ArrayList<>();
@@ -18,4 +18,28 @@ class Solution {
         return list;
     }
     
+}
+
+
+// Optimized soln
+
+//TC: O(n)
+//SC:O(1)
+//leetcode successful
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i =0;i<nums.length;i++){
+            int idx = Math.abs(nums[i])-1;
+            if(nums[idx]>0)
+                nums[idx]=-1*nums[idx];
+        }
+        for(int i =0;i<nums.length;i++){
+            if(nums[i]>0)
+                list.add(i+1);
+        }
+        return list;
+    }
 }

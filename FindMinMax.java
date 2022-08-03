@@ -1,6 +1,9 @@
-
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 public class MinMax {
-	static int[] getMinMax(int arr[], int n) {
+	public int[] getMinMax(int arr[], int n) {
 		int min,max;
 		int i;
 		if (n % 2 == 0) {

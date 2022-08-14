@@ -24,7 +24,8 @@ class Solution:
                 else: # if board[i][j] == 0
                     if count1 == 3:
                         board[i][j] = -1
-                        
+        
+        # reset to modified 0/1               
         for i in range(m):
             for j in range(n):
                 if board[i][j] == -1:

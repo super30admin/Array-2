@@ -1,0 +1,39 @@
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        def cnt_nbr(board,i,j):
+            cnt = 0
+            dirs = [[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]]
+            for i in range(0,len(dirs)):
+                r = i+dirs[i][0]
+                c = j+dirs[i][1]
+                if r>=len(board) or c>=len(board[0]) or r<0 or c<0:
+                    continue
+                else:
+                    if board[r][c] == 1 or board[r][c] == 3 :
+                        cnt += 1  
+
+            return cnt
+            
+            
+        for i in range(0,len(board)):
+            for j in range(0,len(board[0])):
+                if board[i][j] == 0 and cnt_nbr(board,i,j) ==3:
+                    board[i][j] = 2
+                elif board[i][j] ==1 and cnt_nbr(board,i,j)<2:
+                    board[i][j] = 3
+                elif board[i][j] ==1 and cnt_nbr(board,i,j)>3:
+                    board[i][j] = 3
+                print(cnt_nbr(board,2,2),)
+                
+        for i in range(0,len(board)):
+            for j in range(0,len(board[0])):
+                if board[i][j] == 2:
+                    board[i][j] = 1
+                elif board[i][j] == 3:
+                    board[i][j] = 0
+        
+        
+        

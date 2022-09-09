@@ -1,0 +1,27 @@
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        m = len(board)
+        n = len(board[0])
+        for i in range(m):
+            for j in range(n):
+                l_n = 0
+                for x in range(max(i-1, 0), min(i+2, m)):
+                    for y in range(max(j-1, 0), min(j+2, n)):
+                        if i == x and j == y:
+                            continue
+                        l_n += board[x][y] % 2
+                if board[i][j] == 0:
+                    if l_n == 3:
+                        board[i][j] = 2
+                elif l_n < 2 or l_n > 3:
+                    board[i][j] = 3
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == 2:
+                    board[i][j] = 1
+                elif board[i][j] == 3:
+                    board[i][j] = 0
+                    
+# Time Complexity: O(mn)
+# Space Complexity : O(1)
+# Successfuly implemented on Leetcode

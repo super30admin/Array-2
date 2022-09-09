@@ -1,0 +1,15 @@
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        for idx in range(len(nums)):
+            while idx + 1 != nums[idx] and nums[idx] != nums[nums[idx] - 1]:
+                t = nums[idx]
+                nums[idx] =  nums[nums[idx] - 1]
+                nums[t - 1] = t
+        result = []
+        for i in range(len(nums)):
+                if i + 1 != nums[i]: result.append(i + 1)
+        return result
+    
+# Time Complexity: O(n)
+# Space Complexity : O(1)
+# Successfuly implemented on Leetcode

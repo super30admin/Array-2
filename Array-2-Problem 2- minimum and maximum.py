@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #32 {Easy }
+ FAANMG Problem #32 {Easy }
 
 
 Maximum and minimum of an array using minimum number of comparisons

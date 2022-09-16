@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #31 {Easy}
+ FAANMG Problem #31 {Easy}
 
 
 448. Find All Numbers Disappeared in an Array

@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #33 {Medium}
+ FAANMG Problem #33 {Medium}
 
 289. Game of Life
 

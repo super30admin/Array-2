@@ -59,3 +59,8 @@ class Solution {
         return result;
     }
 }
+
+//other approach
+//Sort the array , then traverse through the array and do the same like we did in optiized, turn the visited index value to negative. 
+//TC- O(n log n) + O(n) ==> O(n logn)
+//sc - constant 

@@ -1,0 +1,36 @@
+
+class Solution:
+    
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        m=len(board)
+        n=len(board[0])
+        for i in range(0,m):
+            for j in range(0,n):
+                c=0
+                dirs=[[0,1],[0,-1],[1,0],[-1,0],[-1,-1],[-1,1],[1,-1],[1,1]]
+                for k in dirs:
+                    nr=i+k[0]
+                    nc=j+k[1]
+                    if (nr>=0 and nc>=0 and nr<len(board) and nc<len(board[0]) and (board[nr][nc]==1 or board[nr][nc]==2)):
+                        c=c+1
+                #t=liveneighbours(board,i,j)
+                if (board[i][j]==0):
+                    if (c==3):
+                        board[i][j]=3 #keeping 1 as 3
+                        
+                else:
+                    if (c<2 or c>3):
+                        board[i][j]=2 #keeping 0 as 2
+        
+        for i in range(0,m):  
+            for j in range(0,n): 
+                if (board[i][j]==3):
+                    board[i][j]=1
+                elif (board[i][j]==2):
+                    board[i][j]=0
+
+TC-O(mn) m is number of rows, n is number of cols
+SC-O(1)

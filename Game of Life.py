@@ -9,9 +9,7 @@
 # TC - O(m*n)
 # SC - O(1)
 #temporary state change approach
-# TC - O(m*n)
-# SC - O(1)
-#temporary state change approach
+
 
 class Solution:
     def gameOfLife(self, board) -> None:

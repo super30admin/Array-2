@@ -1,3 +1,7 @@
+'''
+Time Complexity: O(N)
+Space Complexity: O(1)
+'''
 def maxMin(arr, n):
     i = 0
     if(n==1):

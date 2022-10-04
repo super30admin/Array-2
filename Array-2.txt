@@ -1,0 +1,47 @@
+All test cases Passed
+Find All Numbers Disappeared in an Array
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        l=[]
+        for i in range(0,len(nums)):
+            if nums[abs(nums[i])-1]>0:
+                nums[abs(nums[i])-1]=nums[abs(nums[i])-1]*-1
+        for i in range(0,len(nums)):
+            if nums[i]>0:
+                l.append(i+1)
+        return l
+Game of Life
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        def CountOfLiveNeighbours(board,i,j):
+            l=[[0,-1],[0,1],[-1,0],[1,0],[-1,-1],[-1,1],[1,-1],[1,1]]
+            count=0
+            for x in l:
+                nr=i+x[0]
+                nc=j+x[1]
+                if nr>=0 and nc>=0 and nr<row and nc<col and (board[nr][nc]==1 or board[nr][nc]==2):
+                    count=count+1
+            return count
+        row=len(board)
+        col=len(board[0])
+        for i in range(0,row):
+            for j in range(0,col):
+                liveNeib= CountOfLiveNeighbours(board,i,j)
+                if board[i][j]==1:
+                    if liveNeib<2 or liveNeib>3:
+                        board[i][j]=2
+                else:
+                    if liveNeib==3:
+                        board[i][j]=3
+        for i in range(0,row):
+            for j in range(0,col):
+                if board[i][j]==2:
+                    board[i][j]=0
+                elif board[i][j]==3:
+                    board[i][j]=1
+    
+                
+        

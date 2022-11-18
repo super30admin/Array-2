@@ -1,43 +1,53 @@
-//Time complexity is O(N)
-//Space complexity is O(N)
-public class MinMaximum {
+public class MinMax {
+    class Pair {
  
-    static int[] getMinMax(int arr[], int n) {
-        int[] minmax = new int[2];
-        int i;
+        int min;
+        int max;
+    }
  
-        if (n == 1) {
-            minmax[0] = arr[0];
-            minmax[1] = arr[0];
+    public Pair getMinMax(int arr[], int low, int high)
+    {
+        Pair minmax = new Pair();
+        Pair one = new Pair();
+        Pair two = new Pair();
+        int mid;
+ 
+        if (low == high) {
+            minmax.max = arr[low];
+            minmax.min = arr[low];
             return minmax;
         }
-
-        if (arr[0] > arr[1]) {
-            minmax[1] = arr[0];
-            minmax[0] = arr[1];
-        } else {
-            minmax[1] = arr[1];
-            minmax[0] = arr[0];
+ 
+        if (high == low + 1) {
+            if (arr[low] > arr[high]) {
+                minmax.max = arr[low];
+                minmax.min = arr[high];
+            }
+            else {
+                minmax.max = arr[high];
+                minmax.min = arr[low];
+            }
+            return minmax;
         }
  
-        for (i = 2; i < n; i++) {
-            if (arr[i] > minmax[1]) {
-                minmax[1] = arr[i];
-            } else if (arr[i] < minmax[0]) {
-                minmax[0] = arr[i];
-            }
+        mid = (low + high) / 2;
+        one = getMinMax(arr, low, mid);
+        two = getMinMax(arr, mid + 1, high);
+ 
+        if (one.min < two.min) {
+            minmax.min = one.min;
+        }
+        else {
+            minmax.min = two.min;
+        }
+ 
+        if (one.max > two.max) {
+            minmax.max = one.max;
+        }
+        else {
+            minmax.max = two.max;
         }
  
         return minmax;
     }
- 
-    public static void main(String args[]) {
-        int arr[] = {1000, 11, 445, 1, 330, 3000};
-        int arr_size = 6;
-        int[] minmax = getMinMax(arr, arr_size);
-        System.out.printf("\nMinimum element is %d", minmax[0]);
-        System.out.printf("\nMaximum element is %d", minmax[1]);
- 
-    }
- 
 }

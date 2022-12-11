@@ -1,19 +1,18 @@
+Time Complexity : O(n)
+Space Complexity: O(1)
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        # Doing with hashmap
-        hashmap = {}
-        for num in nums:
-            hashmap[num] =1
-        output =[]
-        #checking if hashtable has the number from 1-n or not and if not then storing it in output array
-        for num in range(1,len(nums)+1):
-            if num not in hashmap:
-                output.append(num)
-        return output
-    """
-    TC- O(n)
-    SC- O(n)
-    Did this code successfully run on Leetcode- Yes :
-    Any problem you faced while coding this- No :
-    """
+        if not nums:
+            return 1
+        i = 0
+        while i < len(nums):
+            idx = abs(nums[i])-1
+            if nums[idx]>=0:
+                nums[idx] *= -1
+            i += 1
+        result = []
+        for i in range(len(nums)):
+            if nums[i] >=0:
+                result.append(i+1)
+        return result
         

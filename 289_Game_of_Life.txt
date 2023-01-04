@@ -1,0 +1,65 @@
+// Time Complexity : o(mn)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+* Traverse the array , and change the same array according to the rules . To prevent loss of original array information
+* Let 2 represent live to dead
+* Let 3 represent dead to live
+* traverse the array once again and mark 2 to 0 and 3 to 1
+* */
+
+
+class Solution {
+    public void gameOfLife(int[][] board) {
+        for(int i = 0; i< board.length; i++){
+            for(int j = 0; j< board[0].length; j++){
+                int count = countLive(board, i, j);
+
+                if(board[i][j] == 1 && (count < 2  || count >3)){
+                    board[i][j] = 2; // live to dead 1 -> 2
+                }
+                else if(board[i][j] == 0 && count==3){
+                    board[i][j] = 3; //dead to live  0 -> 3;
+                }
+            }
+        }
+
+        for(int i = 0; i< board.length; i++){
+            for(int j = 0; j< board[0].length; j++){
+
+
+                if(board[i][j] == 2 ){
+                    board[i][j] = 0; // live to dead 1 -> 2
+                }
+                else if(board[i][j] == 3 ){
+                    board[i][j] = 1; //dead to live  0 -> 3;
+                }
+            }
+        }
+
+    }
+
+    public int countLive(int[][] board, int x, int y ){
+        int[][] dir = new int[][]{{-1,-1}, {-1,0}, {-1,1},
+                                  {0,-1}, {0,1},
+                                  {1,-1}, {1,0}, {1,1}
+                                 };
+
+        int count = 0;
+        for(int i = 0; i< dir.length; i++){
+
+            int nx = x + dir[i][0];
+            int ny = y + dir[i][1];
+
+            if(nx >=0 && nx < board.length && ny>=0 && ny <board[0].length && (board[nx][ny] == 1 || board[nx][ny] ==2)){
+                count++;
+            }
+
+        }
+        return count;
+    }
+}

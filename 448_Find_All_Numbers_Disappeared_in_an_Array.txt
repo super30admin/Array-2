@@ -1,0 +1,33 @@
+// Time Complexity : o(n)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+* Traverse the entire array once and at each index i , go to nums[nums[i]]  and multiply the abs value by -1
+* Traverse the array again. Whichever indices have elements that are positive are the missing numbers
+* */
+
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+
+        for( int i = 0; i < nums.length; i++){
+            int idx = Math.abs(nums[i]) -1;
+            if(nums[idx]>0){
+                nums[idx] *=-1;
+            }
+        }
+
+        for(int i = 0; i< nums.length ; i++){
+            if(nums[i] > 0){
+                result.add(i+1);
+            }
+        }
+
+        return result;
+    }
+}

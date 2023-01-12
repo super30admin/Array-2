@@ -1,0 +1,28 @@
+// Time Complexity : O(N)
+// Space complexity : O(1)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+// Approach
+/*
+For every element in the given array, check if the value present in element - 1 index is positive, if yes make it negative
+After traversing, loop again and if the value is positive it means that the index + 1 is not present in the array
+*/
+
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        vector<int> res;
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[abs(nums[i]) - 1] > 0) {
+                nums[abs(nums[i]) - 1] *= -1;
+            }
+        }
+
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] > 0) {
+                res.push_back(i + 1);
+            }
+        }
+        return res;
+    }
+};

@@ -1,0 +1,54 @@
+// Time Complexity : O(M * N) where M is the no. of rows and N is the no. of cols
+// Space Complexity : O(1)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+// Counting the no. of live neighbours around each cell and following the rules
+
+class Solution {
+public:
+    void gameOfLife(vector<vector<int>>& board) {
+        int m = board.size();
+        int n = board[0].size();
+        
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                int alive = countAlive(board, i, j, m, n);
+                if(board[i][j] == 1 && (alive < 2 || alive > 3)) {
+
+                    // 1 -- 0 ---> 2 to maintain original values
+                    board[i][j] = 2;
+                }
+                if(board[i][j] == 0 && (alive == 3)) {
+
+                    // 0 -- 1 ---> 3
+                    board[i][j] = 3;
+                }
+            }
+        }
+        
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(board[i][j] == 2) {
+                    board[i][j] = 0;
+                }
+                if(board[i][j] == 3) {
+                    board[i][j] = 1;
+                }
+            }
+        }
+    }
+
+    int countAlive(vector<vector<int>> &board, int i, int j, int m, int n) {
+        int result = 0;
+                                //   top      right   down    left    topleft  topright bottomleft bottomright
+        vector<vector<int>> dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
+        for(auto v : dirs) {
+            int r = i + v[0];
+            int c = j + v[1];
+            if(r >= 0 && r < m && c >= 0 && c < n && (board[r][c] == 1 || board[r][c] == 2)) {
+                result++;
+            }
+        }
+        return result;
+    }
+};

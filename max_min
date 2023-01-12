@@ -1,0 +1,29 @@
+// Time Complexity : O(N)
+// Space Complexity : O(1)
+// Did this code successfully run : Yes
+// Any problems faced : No
+// comparing two adjacent elements to reduce no. of comparisions
+
+class Solution
+{
+   public:
+    int findSum(int A[], int N)
+    {
+    	//code here.
+    	int minNum = A[0];
+    	int maxNum = A[0];
+    	for(int i = 0; i < N - 1; i += 2) {
+    	    if(A[i] < A[i + 1]) {
+    	        minNum = min(minNum, A[i]);
+    	        maxNum = max(maxNum, A[i + 1]);
+    	    } else {
+    	        minNum = min(minNum, A[i + 1]);
+    	        maxNum = max(maxNum, A[i]);
+    	    }
+    	    // cout << i << "\n";
+    	}
+    	// cout << minNum << " " << maxNum;
+    	return minNum + maxNum;
+    }
+
+};

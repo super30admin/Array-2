@@ -2,8 +2,8 @@
 
 # // Time Complexity : O(nxm)
 # // Space Complexity : O(1)
-# // Did this code successfully run on Leetcode : NO
-# // Any problem you faced while coding this : Yes, Not able to figure out the bug. The board is only updating "2" not "3" 
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : no
 
 
 # // code here along with comments explaining approach
@@ -16,13 +16,19 @@
     # 1->3 for 0->1 |  3 means previously it was 0
 
 
-
 class Solution:
     def gameOfLife(self, board: List[List[int]]) -> None:
         """
         Do not return anything, modify board in-place instead.
         """
-        
+        # 1 -> 0 if neighbors<2
+        # 1 -> 1 if neighbors == 2 or 3
+        # 1 -> 0 if neighbors > 3
+        # 0 -> 1 if neighbors == 3
+
+        # 1->2 for 1->0 |  2 means previously it was 1
+        # 1->3 for 0->1 |  3 means previously it was 0
+
         # countintg neighbours
         def count_neighbours(board,n,m, row,col):
             neighbors = 0
@@ -30,7 +36,7 @@ class Solution:
             for dir in dir_arr:
                 r = row+dir[0]
                 c = col+dir[1]
-                if r <=0 and c <=0 and r < n and c < m and (board[r][c]==1 or board[r][c]==2):
+                if r >=0 and c >=0 and r < n and c < m and (board[r][c]==1 or board[r][c]==2): #bounds when checking on 8 directions
                         neighbors = neighbors + 1
             return neighbors
 
@@ -45,7 +51,6 @@ class Solution:
                     board[r][c] = 2
                 if cell == 0 and neighbors == 3:
                     board[r][c] = 3
-        print(board)
         # update the values 2, 3 to 0 , 1
         for r in range(n):
             for c in range(m):
@@ -53,4 +58,3 @@ class Solution:
                     board[r][c] = 0
                 if board[r][c] == 3:
                     board[r][c] = 1
-        

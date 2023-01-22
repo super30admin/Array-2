@@ -67,3 +67,45 @@ class Solution {
         
     }
 }
+
+
+
+
+
+
+
+
+Problem-448 (Find All Numbers Disappeared in an array)
+// Time Complexity :O(n)
+// Space Complexity :constant
+// Did this code successfully run on Leetcode :YES
+// Any problem you faced while coding this :NO
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result= new ArrayList<>();
+        int len=nums.length;
+        //int k=0;
+        //considering values as index and subtracting by 1 and making the value negative.
+        for(int i=0; i<len; i++)
+        {
+            if(nums[Math.abs(nums[i])-1]>0){
+                nums[Math.abs(nums[i])-1]=nums[Math.abs(nums[i])-1]*-1;
+            }
+            else{
+
+            }
+        }
+        //Iterating to find positive values
+        for(int j=0; j<len;j++){
+            if(nums[j]>0){
+                result.add(j+1);
+            }
+        }
+        return result;
+    }
+   // return result;
+}

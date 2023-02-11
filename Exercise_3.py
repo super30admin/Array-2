@@ -1,5 +1,5 @@
 #Time Complexity : O(M*N), N being the length of the array and M being the width. 
-#Space Complexity : O(M*N), N being the length of the array and M being the width. 
+#Space Complexity : O(1), because not array is used. 
 #Did this code successfully run on Leetcode : Yes
 #Any problem you faced while coding this : Kept mixing i and j while typing and then 
 #having to find the mistype while debugging. 

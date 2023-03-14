@@ -1,15 +1,26 @@
 # TC: O(n)
 # SC: O(1)
 
+
+
 def getMinMax(arr):
-    minimum = float('inf')
-    maximum = float('-inf')
+    minimum = arr[0]
+    maximum = arr[0]
     
-    for i in arr:
-        if minimum > i:
-            minimum = i
-        if maximum < i:
-            maximum = i
+    i = 1
+    while i < len(arr) - 1:
+        if arr[i] > arr[i+1]:
+            maximum = max(maximum, arr[i])
+            minimum = min(minimum, arr[i+1])
+        else:
+            maximum = max(maximum, arr[i+1])
+            minimum = min(minimum, arr[i])
+        i += 2
+        
+    if i == len(arr) - 1:
+        maximum = max(maximum, arr[i])
+        minimum = min(minimum, arr[i])
+        
     return maximum, minimum
     
 if __name__ =='__main__':

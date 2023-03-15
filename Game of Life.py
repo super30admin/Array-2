@@ -1,5 +1,5 @@
 # Time Complexity: O(m*n)
-# Space Complexity: O(1) since I'm making in-lace edits
+# Space Complexity: O(1) since I'm making in-place edits
 
 class Solution:
     def gameOfLife(self, board: List[List[int]]) -> None:

@@ -2,7 +2,7 @@
 # Space Complexity: O(1) since I'm making in-place edits
 
 class Solution:
-    def gameOfLife(self, board: List[List[int]]) -> None:
+    def gameOfLife(self, board) -> None:
         """
         Do not return anything, modify board in-place instead.
         """
@@ -42,4 +42,8 @@ class Solution:
                     board[i][j] = 1
 
         return board
+obj = Solution()
+ans = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+obj.gameOfLife(ans)
+print(ans)
 

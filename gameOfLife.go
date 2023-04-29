@@ -1,3 +1,19 @@
+// Time Complexity : O(mn)
+// Space Complexity : O(1) since we're changing the board in place
+// Did this code successfully run on Leetcode : Yes
+
+/*
+
+Approach:
+We check each cell's neighbors and mutate that cell according to the given
+rules. However, to optimize space, we utilize the given matrix itself by
+mapping some states as follows:
+- if a cell changes from 1 to 0, we consider that as 2
+- if a cell changes from 0 to 1, we consider that as 3
+Then we make a final pass to change all values back to 0 and 1 respectively.
+
+*/
+
 package main
 
 var m, n int

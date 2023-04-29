@@ -1,3 +1,18 @@
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+
+/*
+
+Approach:
+This problem finds the min and max in an array. We need to do a linear search
+(1 traversal is required at minimum). However, to optimize the number of
+comparisons, we compare pairs of elements at a time. This will reduce the
+number of comparisons from 4 to 3 for every 2 elements since we're only
+comparing max with the greater of the 2 and the min with the lesser of the two.
+
+*/
+
 package main
 
 import (

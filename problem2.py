@@ -1,42 +1,40 @@
-#the code has a time complexity of O(rows * columns) and a space complexity of O(1).
-class Solution:
-    def countLiveCells(self, i: int, j: int, board: List[List[int]]) -> int:
-     directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-     i_bou= len(board)-1
-     j_bou= len(board[0])-1
-     print(i_bou,j_bou)
-     count = 0
-     for a, b in directions:
-         print("outside:",i+a,j+b)
-         print(i+a<=i_bou and i+a>=0 and  j+b<=j_bou and j+b>=0)
-         
-         if i+a<=i_bou and i+a>=0 and  j+b<=j_bou and j+b>=0 and  (board[i+a][j+b] == 1 or board[i+a] [j+b] == 2):
-            print("inside:",i+a,j+b)
-            count += 1
+def findMinMax(arr):
+    n = len(arr)
 
-     return count
+    # Initialize min_val and max_val with the first two elements
+    if arr[0] < arr[1]:
+        min_val = arr[0]
+        max_val = arr[1]
+    else:
+        min_val = arr[1]
+        max_val = arr[0]
 
-    def gameOfLife(self, board: List[List[int]]) -> None:
-        """
-        Do not return anything, modify board in-place instead.
-        """
-        rows= len(board)
-        columns= len(board[0])
+    # Iterate through the array, comparing elements pairwise
+    i = 2  # Start from the third element
+    while i < n - 1:
+        if arr[i] < arr[i + 1]:
+            if arr[i] < min_val:
+                min_val = arr[i]
+            if arr[i + 1] > max_val:
+                max_val = arr[i + 1]
+        else:
+            if arr[i + 1] < min_val:
+                min_val = arr[i + 1]
+            if arr[i] > max_val:
+                max_val = arr[i]
+        i += 2
 
-        for i in range(rows):
-          for j in range(columns):
-            liveCells=self.countLiveCells(i,j,board)
-            if(board[i][j]==1):
-             if(liveCells<2):
-                board[i][j]=2
-             elif(liveCells > 3):
-                 board[i][j]=2
-            else:
-                if(liveCells == 3):
-                    board[i][j]=3
-        for i in range(rows):
-         for j in range(columns):
-            if(board[i][j]==2):
-                board[i][j]=0
-            if(board[i][j]==3):
-                board[i][j]=1
+    # Handle the last element if the array length is odd
+    if n % 2 != 0:
+        if arr[n - 1] < min_val:
+            min_val = arr[n - 1]
+        elif arr[n - 1] > max_val:
+            max_val = arr[n - 1]
+
+    return min_val, max_val
+
+# Example usage:
+arr = [3, 7, 2, 9, 1, 5, 6]
+min_val, max_val = findMinMax(arr)
+print("Minimum:", min_val)
+print("Maximum:", max_val)

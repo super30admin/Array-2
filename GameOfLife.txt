@@ -1,0 +1,62 @@
+class Solution {
+    /**
+    Time Complexity - O(m*n)
+    Space Complexity - O(1)
+     */
+    public void gameOfLife(int[][] board) {
+        
+        int m = board.length;
+        int n = board[0].length;
+
+        // 2 tracks previously alive now dead cell
+        // 3 tracks previously dead now alive cell
+        for(int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                int aliveNeighbours = countAliveNeighbors(board, i, j);
+                if (board[i][j] == 1 && aliveNeighbours <2) {
+                    // alive cell with less than 2 live neighbours dies by under-population
+                    board[i][j] = 2;
+                }
+                if (board[i][j] == 1 && aliveNeighbours >=2 && aliveNeighbours <=3) {
+                    // live cell with 2 or 3 neighbours lives
+
+                }
+                if (board[i][j] ==1 && aliveNeighbours > 3) {
+                    // live cell dies by over population
+                    board[i][j] = 2;
+                }
+                if (board[i][j] ==0 && aliveNeighbours == 3) {
+                    // dead cell lives
+                    board[i][j] = 3;
+                }
+            }
+        }
+
+        for (int i=0; i<m ; i++) {
+            for (int j=0; j<n; j++) {
+                if (board[i][j] == 2) {
+                    board[i][j] = 0;
+                }
+                if (board[i][j] == 3) {
+                    board[i][j] = 1;
+                }
+            }
+        }
+    }
+
+    private int countAliveNeighbors(int[][] board, int i, int j) {
+        int[][] directions = { {0, 1},{1, 0},{-1, 1}, {1, -1},{1, 1},{-1, -1},{-1, 0},{0, -1}};
+
+        int aliveNeighbours = 0;
+        for(int[] direction : directions) {
+            int neighbourRow = i + direction[0];
+            int neighbourCol = j + direction[1];
+            if (neighbourRow >=0 && neighbourCol >=0 && neighbourRow < board.length && neighbourCol < board[0].length) {
+                if (board[neighbourRow][neighbourCol] == 1 || board[neighbourRow][neighbourCol] ==2) {
+                    aliveNeighbours++;
+                }
+            }
+        }
+        return aliveNeighbours;
+    }
+}

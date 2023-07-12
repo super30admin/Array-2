@@ -1,0 +1,31 @@
+public class Main {
+
+    /**
+     * time complexity - O(n)
+     * Space Complexity - O(1)
+     *
+     * # Comparisons
+     * Odd array = 3 * (n-1)/2
+     * Even Array = 3 * (n-1)/2 + 1
+     */
+    public static void main(String[] args) {
+        System.out.println(findMinMaxOptimized(new int[]{22, 14, 8, 17, 35, 3}));
+    }
+
+    public static int[] findMinMaxOptimized(int[] arr) {
+
+        int min = arr[0];
+        int max = arr[0];
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] < arr[i + 1]) {
+                min = Math.min(min, arr[i]);
+                max = Math.max(max, arr[1 + 1]);
+            } else {
+                min = Math.min(min, arr[i + 1]);
+                max = Math.max(max, arr[i]);
+            }
+        }
+        return new int[]{min, max};
+    }
+}

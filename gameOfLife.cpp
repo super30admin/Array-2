@@ -7,6 +7,20 @@
 // Your code here along with comments explaining your approach
 
 /*
+1->0 = 2
+0->1 = 3
+
+we would first iterate over the elements of the matrix and find the number of alive neighbors
+then we check if the element is alive and the less than 2 neigbors are alive or more than 3 neighbors are alive
+if thats the case, then 1 dies(becomes 2). Else, if the element is 0 and count of alive neighbors
+is 3, the 0 lives (becomes 3). 
+
+Later we again iterate over the elements of the matrix and find the elements which were first alive
+but died(2->0) or which were first dead then became alive(3->1) and turn the matrix into our resulting matrix.
+
+To find the number of alive neighbors, we use the direction array, we iterate over the direction array
+and we update the row and column to find the number. if the neighbors are in bounds and are alive, we increment count.
+
 
 */
 

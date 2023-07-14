@@ -8,6 +8,15 @@
 // Your code here along with comments explaining your approach
 
 /*
+we first iterate over all the possible elements(values) in the array and we find the 
+index of the element as if they were sorted and unique. In such a case, the values from 
+1-n will have indexes 0-n-1, meaning the index of the element would be element-1.
+we iterate over the elements and we find the index of the element and then we muliply it
+with negative 1 to show that the element(index+1) at this index exists. 
+
+we again iterate over the elements and we find the missing numbers by finding elements which
+are greater than 0. If not greater than 0, we convert them back to their original non negative values.
+
 
 */
 #include <iostream>

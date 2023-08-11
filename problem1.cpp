@@ -10,7 +10,7 @@
 Concept of temporary state change
 Make the index associated with the value negative. 
 and traverse the complete array
-The element index that is non-negative is the number missing.
+The element index that is non-negative is the missing number
 
 */
 

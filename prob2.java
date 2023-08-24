@@ -1,3 +1,8 @@
+// Time Complexity : O (m*n) , m = # of rows, n = # of cols
+// Space Complexity : O (1) no extra space
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, was using i, j instead of the new row and new column, nr, nc,  in countLive
+
 public class prob2 {
 
     public static void gameOfLife(int[][] board){

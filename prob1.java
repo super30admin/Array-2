@@ -1,3 +1,8 @@
+// Time Complexity : O (n) , n = length of nums array
+// Space Complexity : O (1) no extra space
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, faced minor issues while coding, was checking nums[i] > 0 instead of nums[index]
+
 import java.util.*;
 public class prob1 {
 

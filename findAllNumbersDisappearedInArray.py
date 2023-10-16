@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
+        # Time Complexity: O(N)
+        # Space Complexity: O(2N) = O(N)
         res = set([i+1 for i in range(len(nums))])
         nums = set(nums)
         for s in nums:

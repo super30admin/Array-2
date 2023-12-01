@@ -1,3 +1,7 @@
+/*
+tc: O(m*n)
+sc: O(1)*/ 
+
 public class Solution {
     int[][] dirs = 
     {

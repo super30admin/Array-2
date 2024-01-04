@@ -6,7 +6,7 @@
 // Your code here along with comments explaining your approach
 // Go to each element, check if the index position of that number(element-1) is in array and is a positive number.
 // If the element at the index position is positive then make it negative. Repeat this process for all the elements.
-// After this step, check for positive elements. Those positive elements are the disappearing elements. 
+// After this step, check for positive elements and return indices. Those positive elements are the disappearing elements. 
 // As an extra step we make all elements as positive to restore input array. 
 
 

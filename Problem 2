@@ -1,0 +1,46 @@
+# Game of Life
+
+
+class Solution(object):
+    def gameOfLife(self, board):
+        """
+        :type board: List[List[int]]
+        :rtype: None Do not return anything, modify board in-place instead.
+        """
+        if not board or not board[0]:
+            return
+
+        rows, cols = len(board), len(board[0])
+
+        # Helper function to count live neighbors
+        def count_live_neighbors(row, col):
+            count = 0
+            directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+
+            for dr, dc in directions:
+                nr, nc = row + dr, col + dc
+                if 0 <= nr < rows and 0 <= nc < cols and abs(board[nr][nc]) == 1:
+                    count += 1
+
+            return count
+
+        # Update the board based on the rules
+        for row in range(rows):
+            for col in range(cols):
+                live_neighbors = count_live_neighbors(row, col)
+
+                # Rule 1 and Rule 3
+                if board[row][col] == 1 and (live_neighbors < 2 or live_neighbors > 3):
+                    board[row][col] = -1  # Mark for death
+
+                # Rule 4
+                if board[row][col] == 0 and live_neighbors == 3:
+                    board[row][col] = 2  # Mark for reproduction
+
+        # Final update of the board
+        for row in range(rows):
+            for col in range(cols):
+                if board[row][col] > 0:
+                    board[row][col] = 1  # Alive
+                else:
+                    board[row][col] = 0  # Dead

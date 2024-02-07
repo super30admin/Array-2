@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// TC - O(N*N)
+// TC - O(N*logN)
 // SC - O(1)
 
 // Constraints:

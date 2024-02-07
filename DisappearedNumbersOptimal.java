@@ -26,6 +26,8 @@ public class DisappearedNumbersOptimal {
             for (int i = 0; i < nums.length; i++) {
                 if (nums[i] > 0) {
                     resultList.add(i + 1);
+                } else {
+                    nums[i] *= -1; // Get original array back
                 }
             }
             return resultList;

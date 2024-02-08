@@ -8,10 +8,6 @@ def getMinMax(arr):
     mini = 999999999
     maxi = -99999999
 
-    if arrLen == 1:
-        mini = arr[0]
-        maxi = arr[1]
-
     if arrLen % 2 == 0:
         start = 0
     else:
@@ -20,13 +16,18 @@ def getMinMax(arr):
         start = 1
 
     for i in range(start, arrLen, 2):
+
         if arr[i] > arr[i+1]:
-            mini = arr[i+1]
-            maxi = arr[i-1]
+            if arr[i] > maxi:
+                maxi = arr[i]
+            if arr[i+1] < mini:
+                mini = arr[i+1]
         else:
-            mini = arr[i-1]
-            maxi = arr[i+1]
+            if arr[i+1] > maxi:
+                maxi = arr[i+1]
+            if arr[i] < mini:
+                mini = arr[i]
     return [mini, maxi]
 
 
-print(getMinMax(arr=[1000, 11, 445, 1, 330, 3000]))
+print(getMinMax(arr=[-2, 1, -4, 5, 3]))

@@ -17,7 +17,7 @@ public class MinMaxWithMinComparisonArr {
     private int max = Integer.MIN_VALUE;
     public void minMax(int[] nums) {
         int n = nums.length;
-        for(int i =0; i<n-1; i++){
+        for(int i =0; i<n-1; i+=2 ){
             if(nums[i] < nums[i+1]){
                 min = Math.min(nums[i], min);
                 max = Math.max(nums[i+1], max);
@@ -27,14 +27,14 @@ public class MinMaxWithMinComparisonArr {
             }
         }
 
-//        if(n%2 !=0) { //Odd length array handling
-//            if(nums[n-1] < min){
-//                min = nums[n-1];
-//            }
-//            if(nums[n-1]>max){
-//                max = nums[n-1];
-//            }
-//        }
+        if(n%2 !=0) { //Odd length array handling
+            if(nums[n-1] < min){
+                min = nums[n-1];
+            }
+            if(nums[n-1]>max){
+                max = nums[n-1];
+            }
+        }
 
         System.out.println("Min is : " + min);
         System.out.println("Max is : " + max);
@@ -42,7 +42,7 @@ public class MinMaxWithMinComparisonArr {
 
     public static void main(String[] args){
         MinMaxWithMinComparisonArr obj = new MinMaxWithMinComparisonArr();
-        int[] nums = {5,8,1,6,-3,9};
+        int[] nums = {5,8,1,6,-3};
         //null check on array happens here
         obj.minMax(nums);
     }

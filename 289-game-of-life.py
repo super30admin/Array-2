@@ -47,10 +47,48 @@ In this question, we represent the board using a 2D array. In principle, the boa
 """
 
 class Solution:
+    """
+    Accepted
+    Time Complexity: O(m*n)
+    Space Complexity: O(1)
+
+    Approach:
+    - Use a helper function `countNebs` to count live neighbors for each cell.
+    - Iterate over each cell:
+        - Mark dead cells with three live neighbors as -1 (will become alive).
+        - Mark live cells with less than two or more than three live neighbors as -2 (will die).
+    - Iterate over the board again to update each cell's state:
+        - Change -1 to 1 (dead to alive).
+        - Change -2 to 0 (alive to dead).
+    - Use -1 and -2 to track a cell's previous state while calculating the next state.
+    
+    """
     def gameOfLife(self, board: List[List[int]]) -> None:
-        """
-        Do not return anything, modify board in-place instead.
-        """
-        pass
+        def countNebs(board, i: int, j: int) -> int:
+            nebs = 0
+            dirs = [(1,0), (1,-1), (0,-1), (-1,-1), (-1,0), (-1,1), (0,1), (1,1)]
+            for dir in dirs:
+                if (i + dir[0]) < m and i + dir[0] >=0 and (j + dir[1]) < n and (j + dir[1]) >=0:
+                    tgt = board[i + dir[0]][j + dir[1]]
+                    if tgt == 1 or tgt == -2:
+                        nebs += 1
+            return nebs
+
+            
+        m = len(board)
+        n = len(board[0])
+        for i in range(m):
+            for j in range(n):
+                nebs = countNebs(board, i, j)
+                if board[i][j] == 0 and nebs == 3:
+                    board[i][j] = -1
+                if board[i][j] == 1 and (nebs < 2 or nebs >3):
+                    board[i][j] = -2
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == -1:
+                    board[i][j] = 1
+                if board[i][j] == -2:
+                    board[i][j] = 0
 
 LeetCode(PROBLEM, Solution).check()

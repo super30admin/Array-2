@@ -1,0 +1,40 @@
+class Solution {
+    public void gameOfLife(int[][] board) {
+        int m = board.length, n = board[0].length;
+        int[][] dir = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}};
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int lives = calculate(board, i, j, dir);
+                if (board[i][j] == 1) {
+                    if (lives < 2 || lives > 3) board[i][j] = 2; // Live to dead
+                } else {
+                    if (lives == 3) board[i][j] = 3; // Dead to live
+                }
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 2) {
+                    board[i][j] = 0; // Transition from live to dead
+                }
+                if (board[i][j] == 3) {
+                    board[i][j] = 1; // Transition from dead to live
+                }
+            }
+        }
+    }
+
+    public int calculate(int[][] board, int r, int c, int[][] dir) {
+        int count = 0;
+        for (int[] dirs : dir) {
+            int nr = r + dirs[0];
+            int nc = c + dirs[1];
+            if (nr >= 0 && nr < board.length && nc >= 0 && nc < board[0].length && (board[nr][nc] == 1 || board[nr][nc] == 2)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}

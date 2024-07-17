@@ -1,0 +1,60 @@
+#Problem 1
+
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        if nums == None or len(nums) == 0:
+            return []
+        
+        ret = []
+
+        for i in range(len(nums)):
+            index = abs(nums[i]) - 1
+            if nums[index] > 0:
+                nums[index] = nums[index] * -1 
+        
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                ret.append(i + 1)
+        
+        return ret
+
+#Problem #2
+
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        if board == None or len(board[0]) == 0:
+            return
+        
+        m, n = len(board), len(board[0])
+
+        # First pass to apply the rules and mark changes
+        for i in range(m):
+            for j in range(n):
+                count = self.getCount(board, i, j)
+                if board[i][j] == 1:
+                    if count < 2 or count > 3:
+                        board[i][j] = 2
+                elif board[i][j] == 0:
+                    if count == 3:
+                        board[i][j] = 3
+
+        # Second pass to finalize the board
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == 2:
+                    board[i][j] = 0
+                elif board[i][j] == 3:
+                    board[i][j] = 1
+        
+        # Helper function to get the number of live neighbors
+    def getCount(self, board, i, j):
+        count = 0
+        dirs = [[-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1]]
+        for dir in dirs:
+            r, c = i + dir[0], j + dir[1]
+            if r >= 0 and r < i and c >= 0 and c < j and (board[r][c] == 1 or board[r][c] == 2):
+                count = count + 1
+        return count

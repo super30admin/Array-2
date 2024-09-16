@@ -1,0 +1,66 @@
+/*
+
+Time Complexity: O(n).
+
+LeetCode: Successful BUT:
+Runtime: 270 ms, faster than 5.14% of Java online submissions for Find All Numbers Disappeared in an Array.
+
+since I used remove element.
+
+
+Approach:
+
+I took the max out of the nums array.
+Then I added all the elements from 0 till max in an array list, from 0 such that, I can map value and index easily, since nums starts from 1.
+
+then I iterated the arraylist again, and whatever element nums had, taking that as an index in arraylist, I made it to 0;
+
+then I again iterated through the araylist, and whatever was 0, removed it.
+returned the araylist
+
+
+
+*/
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        ArrayList<Integer> al = new ArrayList<>();
+        
+        
+        if(nums.length==0 || nums==null)
+            return al;
+  
+        int max=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            if(nums[i]>max)
+                max=nums[i];
+        }
+        
+        for(int i=0;i<=max;i++)
+        {
+          al.add(i);  
+        } 
+                
+        for(int i=0;i<nums.length;i++)
+        {
+            al.set(nums[i],0);
+        }
+
+        int i=0;
+        while(i<al.size())
+        {
+            if(al.get(i)==0)
+                al.remove(i);
+            else i++;
+        }
+        
+        if(max<nums.length)
+        {
+            for(int j=max+1;j<=nums.length;j++)
+                al.add(j);
+        }
+        
+        return al;
+    }
+}

@@ -1,0 +1,38 @@
+/* Time O(n)
+  SpaceO(n)
+  leetcode yes
+  problem no
+  
+  created a boolean array which stores true at indexes equal to number in the array.
+  we then iterate this boolean array and check if value at the particular (index-1)[-1 as numbers are starting from 1
+  is true or false. if it is false then that index+1 is the missing number( added one as 1 was subtracted will inserting its
+  value in boolean array)
+  
+  */
+  
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+    
+        List<Integer> arr = new ArrayList<>();
+        if(nums.length==0)
+            return arr;
+        
+        boolean[] seen = new boolean[nums.length];
+        
+        for(int i =0;i<nums.length;i++)
+        {
+            if(seen[nums[i]-1] == false)
+                seen[nums[i]-1]=true;
+        }
+        
+        for(int i =0 ;i <seen.length;i++)
+        {
+            if(seen[i]==false)
+                arr.add(i+1);
+        }
+        
+        return arr;
+        
+    }
+}

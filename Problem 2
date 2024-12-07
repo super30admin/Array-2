@@ -1,0 +1,29 @@
+def findMinAndMax(nums):
+    if not nums:
+        return None, None  # Handle empty array edge case
+    
+    n = len(nums)
+    if n == 1:
+        return nums[0], nums[0]  # Handle single element case
+
+    # Initialize min and max
+    if nums[0] < nums[1]:
+        minimum, maximum = nums[0], nums[1]
+    else:
+        minimum, maximum = nums[1], nums[0]
+    
+    # Process pairs
+    for i in range(2, n, 2):
+        if i + 1 < n:
+            if nums[i] < nums[i + 1]:
+                minimum = min(minimum, nums[i])
+                maximum = max(maximum, nums[i + 1])
+            else:
+                minimum = min(minimum, nums[i + 1])
+                maximum = max(maximum, nums[i])
+        else:
+            # Handle the last single element if odd length
+            minimum = min(minimum, nums[i])
+            maximum = max(maximum, nums[i])
+
+    return minimum, maximum

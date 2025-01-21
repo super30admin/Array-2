@@ -1,0 +1,9 @@
+Time Complexity : O(n)
+Space Complexity : O(1) 
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
+
+
+Your code here along with comments explaining your approach in three sentences only
+Uses indices as hashes and marks the elements with the occured element's indices as negative and iterate through the array again
+and mark positive numbers as negative

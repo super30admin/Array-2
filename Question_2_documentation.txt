@@ -1,0 +1,9 @@
+Time Complexity : O(nm)
+Space Complexity : O(1) 
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
+
+
+Your code here along with comments explaining your approach in three sentences only
+Marks the cells which were alive but are dead in the current mutation as 2 and the cells which were dead but are reborn as 3, so
+that they do not interfere with the results of the remaining cells

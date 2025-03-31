@@ -1,0 +1,21 @@
+class Solution {
+        // first iteration - read the value at index i for each element and update the corresponding value with -1 to imply that there is an occurence of that element 
+        //second iteration loop trough the array and update the output list >> by adding all the index that are positive integers
+
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        // first iteration - read the value at index i for each element and update the corresponding value with -1 to imply that there is an occurence of that element 
+        int n= nums.length;
+        List<Integer> missing = new ArrayList<>();
+        for(int i=0; i< n ; i++){
+            int index = Math.abs(nums[i]) - 1;
+            if(nums[index] > 0) nums[index] *= -1;
+        }
+
+
+        //second iteration loop trough the array and update the output list >> by adding all the index that are positive integers
+        for(int i = 0; i< n ;i++){
+            if(nums[i] > 0) missing.add(i+1);
+        }
+        return missing;
+    }
+}

@@ -1,0 +1,47 @@
+class Solution {
+    public void gameOfLife(int[][] board) {
+        int n = board.length;
+        int m = board[0].length;
+        int[][] neighbours = new int[][]{{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}};
+        //READING state happens here 
+        // one for loop to traverse the MxN matrix visiting each cell and if we are able to make any decision we update them 
+        for(int i=0; i<n ;i++){
+            for(int j=0; j<m ;j++){
+                int nextState = neighbourCount(neighbours,board,i,j);
+                //MUTATION - intial state mutation happens here (0 > 2 & 1 > 3) 
+                // at each cell we calculate the neighbours and decide if the (Lives / Dies)
+                // 1 to 3 if connections > 3  or connections < 2
+                // 0 to 2 if connections == 3 
+                if(board[i][j] == 1){
+                    if(nextState > 3 || nextState < 2){
+                        board[i][j] = 3;
+                    }
+                }else if(board[i][j] == 0){
+                    if(nextState == 3) board[i][j] = 2;
+                }
+            }
+        }
+        //MUTATING BACK - cleaning of the mutated state happens here 
+        // we iterate one more time trough the MxN matrix correcting any modified changes
+        for(int i=0; i<n ;i++){
+            for(int j=0; j<m ;j++){
+                if(board[i][j] == 3) board[i][j] = 0 ;
+                else if(board[i][j] == 2) board[i][j] = 1;
+            }
+        }
+    }
+
+    private int neighbourCount(int[][] neighbours, int[][] board, int i, int j){
+        int count = 0 ;
+
+        for(int[] cell : neighbours){
+            int x = cell[0];  //[1,-1] (,) =(0,0) [-1,0]
+            int y = cell[1];
+            if((i+x >= 0 && i+x < board.length ) && (j+y >= 0 && j+y < board[0].length)){
+                int state = board[i+x][j+y]; //{{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}}
+                if(state == 3 || state == 1 ) count++;
+            }
+        }
+        return count;
+    }
+}

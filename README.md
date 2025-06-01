@@ -8,3 +8,7 @@ Given an array of numbers of length N, find both the minimum and maximum. Follow
 
 ## Problem3 (https://leetcode.com/problems/game-of-life/)
 
+<!-- Find All Numbers Disappeared in an Array
+Max and min
+Game of Life -->
+

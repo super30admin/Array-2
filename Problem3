@@ -1,0 +1,50 @@
+class Solution {
+    public void gameOfLife(int[][] board) {
+        if(board == null || board.length == 0 || board[0].length == 0){
+            return;
+        }
+        int lives = 0;
+        for(int i=0; i< board.length; i++){
+            for(int j=0; j<board[0].length; j++){
+                lives = liveNeighbours(board, i, j);
+                if(board[i][j] == 1){
+                    //live cell has less that 2 or more that 3, change it to 2 to keep track of live cells in original board
+                    if(lives < 2 || lives > 3){
+                        board[i][j] = 2;         //1 -> 0 
+                    }
+                }
+                else{
+                    //dead cell has exactly 3 lives, change to 3, so to not count that for next cell neighbours
+                    if(lives == 3){
+                        board[i][j] = 3;        //0 -> 1
+                    }
+                }
+            }
+            
+        }
+        for(int i = 0; i<board.length; i++){
+            for(int j=0; j<board[0].length; j++){
+                if(board[i][j] == 2){
+                    board[i][j] = 0;
+                }
+                if(board[i][j] == 3){
+                    board[i][j] = 1;
+                }
+            }
+        }
+    }
+
+    private int liveNeighbours(int[][] board, int row, int col){
+        //dirs array which stores all 8 directions of a cell
+        int[][] dirs = {{-1,-1}, {-1,0}, {-1,1}, {0,-1},{0, 1}, {1, -1}, {1, 0}, {1, 1}};
+        int count = 0;
+        for(int i=0; i<dirs.length; i++){
+            int newRow = row + dirs[i][0];
+            int newCol = col + dirs[i][1];
+            if(newRow >=0 && newCol >= 0 && newRow < board.length && newCol < board[0].length && (board[newRow][newCol] == 1 || board[newRow][newCol] == 2)){
+                count++;
+            }
+        }
+        return count;
+    }
+}

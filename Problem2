@@ -1,0 +1,26 @@
+
+class Solution {
+    public Pair<Integer, Integer> getMinMax(int[] arr) {
+        // Code Here
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        int i;
+        //going pair-wise in arr, comparing min of them with result min and max with result max
+        for(i = 0; i< arr.length -1; i= i+2){
+            if(arr[i] > arr[i+1]){
+                min = Math.min(min, arr[i+1]);
+                max = Math.max(max, arr[i]);
+            }
+            else{
+                min = Math.min(min, arr[i]);
+                max = Math.max(max, arr[i+1]);
+            }
+        }
+        //if its odd length, last element is being compared
+        if(i == arr.length-1){
+            min = Math.min(min, arr[i]);
+            max = Math.max(max, arr[i]);
+        }
+        return new Pair<>(min,max);
+    }
+}

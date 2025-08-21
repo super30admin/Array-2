@@ -1,0 +1,23 @@
+'''
+Array-2
+
+Problem1 (https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
+'''
+
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]: # type: ignore
+        if nums == None or len(nums) == 0:
+            return []
+        result = []
+        for i in range(len(nums)):
+            index = abs(nums[i]) - 1 
+            if nums[index] > 0:
+                nums[index] = nums[index] * -1  
+
+        for i in range(len(nums)):
+            if nums[i] < 0:
+                nums[i] = nums[i] * -1
+            else:
+                result.append(i+1)
+
+        return result                     

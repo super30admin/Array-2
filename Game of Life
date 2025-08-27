@@ -1,0 +1,45 @@
+from typing import List
+
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        m = len(board)
+        n = len(board[0])
+
+        for i in range(m):
+            for j in range(n):
+                live_neighbors = self.liveNeighborCount(board, i, j, m, n)
+
+                # Rule 1 & 3: Live cell with < 2 or > 3 live neighbors dies.
+                if board[i][j] == 1:
+                    if live_neighbors < 2 or live_neighbors > 3:
+                        board[i][j] = 2  # Mark as live-to-dead
+                # Rule 4: Dead cell with exactly 3 live neighbors becomes a live cell.
+                else:  # board[i][j] == 0
+                    if live_neighbors == 3:
+                        board[i][j] = 3  # Mark as dead-to-live
+
+        # Final pass: Update all cells to their final state
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == 2:
+                    board[i][j] = 0  # Live-to-dead becomes dead
+                elif board[i][j] == 3:
+                    board[i][j] = 1  # Dead-to-live becomes live
+        
+    def liveNeighborCount(self, board: List[List[int]], r: int, c: int, m: int, n: int) -> int:
+        count = 0
+        dirs = [
+            (-1, -1), (-1, 0), (-1, 1),
+            (0, -1),          (0, 1),
+            (1, -1),  (1, 0),  (1, 1)
+        ]
+        
+        for dr, dc in dirs:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < m and 0 <= nc < n:
+                if board[nr][nc] == 1 or board[nr][nc] == 2:
+                    count += 1
+        return count

@@ -1,88 +1,49 @@
-// Time Complexity : O(m*n) where m & n are the dimensions of board
+// Time Complexity : O(n) where n is the length of arr
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
+
 public class Solution {
-    private int rows;
-    private int columns;
-    private int[][] dirs;
-    public void GameOfLife(int[][] board) {
-        rows = board.Length;
-        columns = board[0].Length;
-        dirs = new int[][]
+    public List<int> getMinMax(int[] arr) {
+        // code here
+        List<int> result = new();
+        int min = 0, max = 0;
+        int i;
+        
+        if(arr.Length % 2 != 0)
         {
-            new int[] {0,1},
-            new int[] {0,-1},
-            new int[] {1,0},
-            new int[] {-1,0},
-            new int[] {-1,-1},
-            new int[] {1,1},
-            new int[] {-1,1},
-            new int[] {1,-1},
-        };
-
-        Helper(board);
-
-        for(int i = 0; i < rows; i++)
-        {
-            for(int j = 0; j < columns; j++)
-            {
-                // 1 -> 0 : 2
-                if(board[i][j] == 2)
-                {
-                    board[i][j] = 0;
-                }
-                
-                // 0 -> 1 : 3
-                else if(board[i][j] == 3)
-                {
-                    board[i][j] = 1;
-                }
-            }
+            min = arr[0];
+            max = arr[0];
+            i=1;
         }
-    }
-
-    public void Helper(int[][] board)
-    {
-        for(int i = 0; i < rows; i++)
+        
+        else
         {
-            for(int j = 0; j < columns; j++)
-            {
-                int neighbours = GetNeighbours(board, i , j);
-
-                if(board[i][j] == 1)
-                {
-                    if(neighbours < 2 || neighbours > 3)
-                    {
-                        board[i][j] = 2;
-                    }
-                }
-
-                else if(board[i][j] == 0)
-                {
-                    if(neighbours == 3)
-                    {
-                        board[i][j] = 3;
-                    }
-                }
-            }
+            min = Math.Min(arr[0], arr[1]);
+            max = Math.Max(arr[0], arr[1]);
+            i=2;
         }
-    }
-
-    public int GetNeighbours(int[][] board, int i, int j)
-    {
-        int neighbours = 0;
-
-        foreach(int[] dir in dirs)
+        
+        
+        while(i<arr.Length)
         {
-            int nr = i + dir[0];
-            int nc = j + dir[1];
-            if(nr>=0 && nr<rows && nc>=0 && nc<columns && (board[nr][nc] == 1 || board[nr][nc] == 2))
+            if(arr[i] < arr[i+1])
             {
-                neighbours += 1;
+                min = Math.Min(arr[i], min);
+                max = Math.Max(arr[i+1], max);
             }
+            
+            else
+            {
+                min = Math.Min(arr[i+1], min);
+                max = Math.Max(arr[i], max);
+            }
+            
+            i+=2;
         }
-
-        return neighbours;
+        
+        result.Add(min);
+        result.Add(max);
+        return result;
     }
 }

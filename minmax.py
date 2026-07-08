@@ -26,3 +26,6 @@ class Solution:
             i += 2
 
         return [min_val, max_val]
+
+    # TC - O(n)
+    # SC - O(1)

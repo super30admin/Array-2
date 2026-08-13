@@ -1,28 +1,31 @@
-// Did this code successfully run on Leetcode : Yes 
-// Any problem you faced while coding this : No
+import java.util.*;
 
-//Time Complexity : O(n) since we are iterating through the array linearly
-//Space Complexity: O(1) since we are not taking any extra space except result array
+//Approach: The idea is to calculate the index of the current element and making the element in that index to negative.
+//At the end, iterate through the array to find if there are any positive elements in the original array and add them
+// to the result.
 
-public List<Integer> findDisappearedNumbers(int[] nums) {
-        ArrayList<Integer> returnList = new ArrayList<>();
-        
-        if(nums == null || nums.length == 0) return returnList;
-        
-        // Iterate through the array and change the index corresponding to the element to a negative value
-        for(int i = 0; i < nums.length; i++){
-            int index = Math.abs(nums[i]) - 1;
-            if(nums[index] > 0){
-                nums[index] = -1 * nums[index];   
+//Time Complexity : O(2n)
+//Space Complexity: O(1)
+
+class DisappearedNumbers {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++)
+        {
+            int idx = Math.abs(nums[i]) - 1;
+            if (nums[idx] > 0){
+                nums[idx]*= -1;
             }
         }
-        
-        // If there is a positive value then that value + 1 is the element missing
+
         for(int i=0; i<nums.length; i++){
             if(nums[i] > 0){
-                returnList.add(i+1);
+                ans.add(i+1);
             }
         }
-        
-        return returnList;
+
+        return ans;
+    }
 }

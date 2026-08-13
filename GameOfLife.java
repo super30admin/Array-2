@@ -1,81 +1,61 @@
-// Did this code successfully run on Leetcode : Yes 
-// Any problem you faced while coding this : No
 
-//Time Complexity : O(m * n) since we are iterating through the matrix couple of times
-//Space Complexity: O(1) since we are not taking any extra space
+//Approach: The idea behind this solution is to iterate through the matrix using direction array and apply the rules to
+//mark a particular element is dead or alive. To avoid collisions, in the first iteration mark the dead and alive with
+// other any numbers other than 0 and 1. At the end, iterate through the matrix to replace with original 0 and 1.
 
-public void gameOfLife(int[][] board) {
+//Time Complexity: O(mxn)
+//Space Complexity: O(1)
+class GameOfLife
+{
+    int[][] dirs;
+    int m, n;
+    public void gameOfLife(int[][] board) {
+
+        this.dirs = new int[][] {{-1, 1}, {-1,0}, {-1, -1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1,1}};
+
         //live to die => -1
         //die to live => 2
         for(int i=0; i<board.length; i++) {
-        		for(int j=0; j<board[0].length; j++) {
-        			if(board[i][j] == 1) {
-        				//Case-1 or Case-3
-        				if(livingCount(board, i, j) < 2 || livingCount(board, i, j) > 3) {
-            				board[i][j] = -1;
-            			}
-        			} else {
-        				//Case-4
-            			if(livingCount(board, i, j) == 3) {
-            				board[i][j] = 2;
-            			}
-        			}
-        		}
+            for(int j=0; j<board[0].length; j++) {
+                if(board[i][j] == 1) {
+                    //Case-1 or Case-3
+                    if(livingCount(board, i, j) < 2 || livingCount(board, i, j) > 3) {
+                        board[i][j] = -1;
+                    }
+                } else {
+                    //Case-4
+                    if(livingCount(board, i, j) == 3) {
+                        board[i][j] = 2;
+                    }
+                }
+            }
         }
-        
+
         for(int i=0; i<board.length; i++) {
-	    		for(int j=0; j<board[0].length; j++) {
-	    			if(board[i][j] == -1) {
-	    				board[i][j] = 0;
-	    			} else if(board[i][j] == 2) {
-	    				board[i][j] = 1;
-	    			}
-	    		}
+            for(int j=0; j<board[0].length; j++) {
+                if(board[i][j] == -1) {
+                    board[i][j] = 0;
+                } else if(board[i][j] == 2) {
+                    board[i][j] = 1;
+                }
+            }
         }
     }
-    
+
     private int livingCount(int[][] board, int i, int j) {
-		int count = 0, nrows = board.length, ncols = board[0].length;
-		
-		//top
-		if(i>0) {
-			if(board[i-1][j] == 1 || board[i-1][j] == -1) count++;
-		}
-		
-		//right
-		if(j < ncols-1) {
-			if(board[i][j+1] == 1 || board[i][j+1] == -1) count++;
-		}
-		
-		//bottom
-		if(i < nrows-1) {
-			if(board[i+1][j] == 1 || board[i+1][j] == -1) count++;
-		}
-		
-		//left
-		if(j > 0) {
-			if(board[i][j-1] == 1 || board[i][j-1] == -1) count++;
-		}
-		
-		// top-left
-		if(i>0 && j > 0) {
-			if(board[i-1][j-1] == 1 || board[i-1][j-1] == -1) count++;
-		}
-		
-		//top-right
-		if(i>0 && j<ncols-1) {
-			if(board[i-1][j+1] == 1 || board[i-1][j+1] == -1) count++;
-		}
-		
-		//bottom-left
-		if(i < nrows-1 && j > 0) {
-			if(board[i+1][j-1] == 1 || board[i+1][j-1] == -1) count++;
-		}
-		
-		//bottom-right
-		if(i < nrows-1 && j < ncols-1) {
-			if(board[i+1][j+1] == 1 || board[i+1][j+1] == -1) count++;
-		}
-		
-		return count;
-	}
+        int count = 0, m = board.length, n = board[0].length;
+
+        for (int[] dir : dirs)
+        {
+            int r = i + dir[0];
+            int c = j + dir[1];
+
+            if(r >= 0 && c >= 0 && r < m && c < n && (board[r][c] == 1 || board[r][c] == -1)) // Check boundaries
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}

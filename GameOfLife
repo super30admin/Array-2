@@ -1,0 +1,64 @@
+/*
+Given: 1-Live, 0-Dead
+Rules: 
+        1. 1 ==> 0 if (liveneigbours<2 || liveneigbours >3)
+        2. 0  => 1 if( liveneigbours==3)
+
+
+  Approach: visit every cell, count its neigbours and make tempoarry state change.
+             For 1==> 0 use 2 // previously live
+             For 0 ==> 1  use 3  //previousely dead  
+
+  Time : o(mn)     
+  space:o(1)      
+*/
+
+class Solution {
+    public void gameOfLife(int[][] board) {
+        
+        for(int row =0; row<board.length; row++){
+            for(int col =0; col<board[0].length; col++){
+                int liveNeigbhourCount = countLiveNeighbours(row, col, board.length, board[0].length, board);
+                //previously live now dead(2)
+                if(board[row][col]==1 &&(liveNeigbhourCount <2 || liveNeigbhourCount>3)){
+                    board[row][col]=2;
+                }
+                //previouslly dead and now live(3)
+                else if(board[row][col]==0 && liveNeigbhourCount ==3){
+                    board[row][col]=3;
+                }
+            }
+
+        }
+        for(int row =0; row<board.length; row++){
+            for(int col =0; col<board[0].length; col++){
+                if(board[row][col]==2){
+                    board[row][col] =0;
+                }
+                 if(board[row][col]==3){
+                    board[row][col] =1;
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+    int countLiveNeighbours(int r, int c, int rows, int cols, int board[][]){
+        int dirs[][]={{-1, 0},{1, 0},{0, -1},{0, 1},{-1,1},{-1,-1},{1, -1},{1, 1}};
+        int count =0;
+        for(int dir[]: dirs){
+            int row = r+dir[0];
+            int col = c+dir[1];
+            //currently live or previously live
+            if(row>=0 && row< rows && col>=0 && col< cols && (board[row][col]==1 || board[row][col]==2)) count++;
+
+        }
+        return count;
+        
+    }
+
+}

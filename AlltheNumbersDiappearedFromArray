@@ -1,0 +1,37 @@
+// Time Complexity :O(2n)=> O(n)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+/*Approach: Numbers are given in the range of 1 to n. 
+    1. I can mutate the same array if number num present in the array go to the index num-1 and make it -ve. Do this for all the array. 
+    2. In the second pass check which elements are positive, if the element is positive it means the index for that nummber+1 number is not prsent in the array record it. 
+    3. change the array to its original poition.
+*/
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        if (nums == null || nums.length == 0)
+            return result;
+
+        // make the number belonging to the nums[i]-1 index position -ve
+        for (int i = 0; i < nums.length; i++) {
+            int idx = Math.abs(nums[i]) - 1;
+            if (nums[idx] > 0) {
+                nums[idx] *= -1;
+            }
+        }
+
+        //Check for the positive numbers, if number is positive ite means the index+1 number is not in the array
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                result.add(i + 1);
+            } else {
+                nums[i] = Math.abs(nums[i]);
+            }
+        }
+
+        return result;
+
+    }
+}
